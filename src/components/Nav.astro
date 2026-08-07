@@ -1,0 +1,88 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/students", label: "Students" },
+  { href: "/countdown", label: "Countdown" },
+  { href: "/fyb-week", label: "FYB Recap" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/awards", label: "Awards" },
+  { href: "/finance", label: "Finance" },
+  { href: "/mangset", label: "Memorial" },
+  { href: "/opportunities", label: "Opportunities" },
+];
+---
+
+<header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-ink-950/85 border-b border-gold-500/20 shadow-[0_4px_30px_rgba(0,0,0,0.6)] transition-all duration-300">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Brand identity with Gold Orbit Ring Motif -->
+    <a href="/" class="flex items-center gap-3 group text-decoration-none shrink-0">
+      <div class="relative flex items-center justify-center w-11 h-11 rounded-full border border-gold-500/50 group-hover:border-gold-400 group-hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(201,162,75,0.25)]">
+        <div class="w-7 h-7 rounded-full border-2 border-gold-400/30 animate-[spin_10s_linear_infinite] group-hover:border-gold-400/80"></div>
+        <span class="absolute text-xs font-mono font-bold text-gold-300 tracking-wider">QP</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-display text-lg sm:text-xl font-bold tracking-wide text-[#F8F8FA] group-hover:text-gold-300 transition-colors">Quantum Plators</span>
+        <span class="text-[10px] font-mono tracking-widest uppercase text-gold-400 font-medium">Physics '24 • Jos</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
+      {navLinks.map((link) => (
+        <a 
+          href={link.href}
+          class="px-3 py-2 rounded-full text-xs xl:text-sm font-body font-medium text-gray-300 hover:text-gold-300 hover:bg-gold-500/10 hover:scale-105 border border-transparent hover:border-gold-500/20 transition-all duration-200 whitespace-nowrap shadow-sm"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button 
+      id="mobile-nav-toggle" 
+      aria-label="Toggle navigation menu" 
+      aria-expanded="false" 
+      class="lg:hidden flex items-center justify-center p-2.5 rounded-lg border border-white/[0.08] text-text hover:text-gold-400 focus-visible:outline-gold-500"
+    >
+      <svg id="icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-ink-950/98 border-b border-white/[0.08] px-6 py-6 transition-all duration-300">
+    <div class="flex flex-col gap-3">
+      {navLinks.map((link) => (
+        <a 
+          href={link.href}
+          class="px-4 py-3 rounded-xl text-base font-medium text-text hover:text-gold-300 hover:bg-white/[0.04] transition-colors border border-white/[0.04]"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile drawer toggle script
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  if (toggleBtn && mobileMenu && iconOpen && iconClose) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+  }
+</script>

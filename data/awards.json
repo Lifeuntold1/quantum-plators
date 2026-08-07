@@ -1,0 +1,111 @@
+{
+  "categories": [
+    {
+      "id": "political-icon",
+      "name": "Political Icon of the Year",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Yarima Nan'akyen", "votes": 0 },
+        { "name": "Katbam Christopher Tohomdet", "votes": 0 },
+        { "name": "Josiah Nnyia", "votes": 0 }
+      ]
+    },
+    {
+      "id": "most-fashionable-male",
+      "name": "Most Fashionable Student (Male)",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Fortune Irabor", "votes": 0 },
+        { "name": "Buki Anthony", "votes": 0 }
+      ]
+    },
+    {
+      "id": "most-fashionable-female",
+      "name": "Most Fashionable Student (Female)",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Cynthia Azodo", "votes": 0 },
+        { "name": "Joy Ogbonna Ebube", "votes": 0 },
+        { "name": "Nanbam Dabang", "votes": 0 }
+      ]
+    },
+    {
+      "id": "most-social-male",
+      "name": "Most Social Student (Male)",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Fortune Irabor", "votes": 0 },
+        { "name": "Paschal Nerat", "votes": 0 },
+        { "name": "Prince Michael", "votes": 0 }
+      ]
+    },
+    {
+      "id": "most-social-female",
+      "name": "Most Social Student (Female)",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Lohkum Esther", "votes": 0 },
+        { "name": "Brown Ndifreke", "votes": 0 }
+      ]
+    },
+    {
+      "id": "student-brand-male",
+      "name": "Student Brand of the Year (Male)",
+      "tier": "400L",
+      "nominees": [
+        { "name": "John Mayowa - Jhon Mobile", "votes": 0 },
+        { "name": "Olaminde Orisande - GDP Gadgets", "votes": 0 },
+        { "name": "Pishing Jirit - Alive Technology", "votes": 0 }
+      ]
+    },
+    {
+      "id": "student-brand-female",
+      "name": "Student Brand of the Year (Female)",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Joy Ogbonna - Jay's Emporium", "votes": 0 },
+        { "name": "Brown Ndifreke - The Scarf Muse", "votes": 0 }
+      ]
+    },
+    {
+      "id": "sportsman-of-the-year",
+      "name": "Sportsman of the Year",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Lawal Abubakar", "votes": 0 },
+        { "name": "Prince Michael", "votes": 0 },
+        { "name": "Paschal Nerat", "votes": 0 }
+      ]
+    },
+    {
+      "id": "content-creator-of-the-year",
+      "name": "Content Creator of the Year",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Azodo Cynthia", "votes": 0 },
+        { "name": "Brown Ndifreke", "votes": 0 },
+        { "name": "Ajagbe Emmanuel", "votes": 0 }
+      ]
+    },
+    {
+      "id": "most-supportive-peer",
+      "name": "Most Supportive Peer of the Year",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Ajagbe Emmanuel", "votes": 0 },
+        { "name": "Sule Charity", "votes": 0 },
+        { "name": "Ibrahim Umar", "votes": 0 }
+      ]
+    },
+    {
+      "id": "friend-of-the-department",
+      "name": "Friend of the Department",
+      "tier": "400L",
+      "nominees": [
+        { "name": "Bamikole Nathaniel", "votes": 0 },
+        { "name": "Yakubu Emmanuel", "votes": 0 },
+        { "name": "Kim Israel Davou (Jasperlite)", "votes": 0 }
+      ]
+    }
+  ]
+}

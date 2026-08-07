@@ -1,0 +1,70 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getOpportunities } from '../../lib/data';
+
+const opportunities = getOpportunities();
+---
+
+<Layout
+  title="Opportunities & Career Vault | Quantum Plators Physics '24"
+  description="Access graduate career opportunities, academic seminars, internships, and postgraduate scholarship postings tailored for physics graduates."
+>
+  <div class="flex flex-col gap-12 max-w-4xl mx-auto">
+    
+    <!-- Header -->
+    <div>
+      <span class="text-xs font-mono uppercase tracking-widest text-gold-400">Career & Life After School</span>
+      <h1 class="font-display text-4xl sm:text-6xl font-bold text-text mt-2 tracking-tight">
+        Opportunities & Seminars
+      </h1>
+      <p class="mt-4 text-base sm:text-lg font-body text-muted leading-relaxed">
+        Helpful job updates, career postings, internships, and scholarship opportunities for our physics graduates.
+      </p>
+    </div>
+
+    <!-- Listings Board (Strict Data Rule compliance) -->
+    <div>
+      {opportunities.length === 0 ? (
+        <div class="p-12 rounded-3xl bg-surface border border-white/[0.08] text-center shadow-xl relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-64 h-64 bg-radial-gold opacity-20 pointer-events-none"></div>
+          
+          <div class="w-16 h-16 rounded-full border border-gold-500/30 mx-auto flex items-center justify-center text-gold-300 font-mono text-2xl mb-6 shadow-sm">
+            ✦
+          </div>
+          <h2 class="font-display text-2xl sm:text-3xl font-semibold text-text">No active postings today</h2>
+          <p class="mt-3 text-sm font-body text-muted max-w-md mx-auto leading-relaxed">
+            We don't have any job postings or seminar notices listed today. As soon as opportunities become available from alumni and faculty, they will appear right here.
+          </p>
+        </div>
+      ) : (
+        <div class="flex flex-col gap-6">
+          {opportunities.map((opp: any) => (
+            <div class="p-8 rounded-2xl bg-surface border border-white/[0.08] hover:border-gold-500/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-lg">
+              <div>
+                <div class="flex items-center gap-3 text-xs font-mono text-muted mb-2">
+                  <span class="text-gold-400 uppercase font-semibold">{opp.type || 'Opportunity'}</span>
+                  {opp.location && <span>• {opp.location}</span>}
+                  {opp.deadline && <span>• Deadline: {opp.deadline}</span>}
+                </div>
+                <h2 class="font-display text-2xl font-semibold text-text">{opp.title}</h2>
+                <p class="text-sm font-body text-muted mt-2 max-w-xl leading-relaxed">{opp.description}</p>
+              </div>
+              
+              {opp.applyUrl && (
+                <a 
+                  href={opp.applyUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="px-8 py-3.5 rounded-full bg-gold-500 hover:bg-gold-400 text-ink-950 font-semibold text-sm transition-all shrink-0 text-center text-decoration-none shadow-md hover:shadow-gold-glow"
+                >
+                  Apply & View Details ↗
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+  </div>
+</Layout>

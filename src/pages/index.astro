@@ -1,0 +1,316 @@
+---
+import Layout from '../components/Layout.astro';
+import HeroSlideshow from '../components/HeroSlideshow.tsx';
+import Countdown from '../components/Countdown.tsx';
+import { getConfig, getFinance, getAwards, getStudents, getFybWeek, getOpportunities } from '../lib/data';
+import { getSlideshowImages, getProfImages } from '../lib/media';
+
+const config = getConfig();
+const finance = await getFinance();
+const awards = getAwards();
+const students = await getStudents();
+const fybWeek = getFybWeek();
+const opportunities = getOpportunities();
+const slideshowImages = getSlideshowImages();
+const profImages = getProfImages();
+
+// Select featured portrait of Prof Mangset for Section 7
+const featuredProfImage = profImages.find(img => img.filename.includes('1') || img.filename.includes('PROF')) || profImages[0];
+
+// Select 4 featured students for Section 5 (prioritize nominees or complete profiles)
+const featuredStudents = students.slice(0, 4);
+---
+
+<Layout 
+  title="Quantum Plators | Official Portal of the Physics Class of 2024, University of Jos"
+  description="Explore the official 70-student directory vault, financial progress, award standings, FYB week recap, and memorial honors for the graduating Physics Class of 2024."
+>
+  <div class="flex flex-col gap-28">
+    
+    <!-- Section 1: Hero Slideshow -->
+    <section aria-label="Class Banner and Hero">
+      <HeroSlideshow client:load slides={slideshowImages.map(s => ({ path: s.path, filename: s.filename, src: s.metadata.src }))} />
+    </section>
+
+    <!-- Section 2: Countdown System (Ticking digits in gold orbit motif) -->
+    <section aria-label="Graduation and Dinner Countdown">
+      <div class="mb-6 max-w-2xl border-l-2 border-gold-500 pl-6">
+        <span class="text-xs font-mono uppercase tracking-widest text-gold-400 font-semibold">Live Countdown Timer</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-text mt-1">Countdown to Our Big Days</h2>
+        <p class="text-sm font-body text-muted mt-2">
+          Counting down every single second until our official Sign-Out celebration and Graduation Dinner Night.
+        </p>
+      </div>
+      <Countdown 
+        client:load 
+        signOutTarget={config.signOut.targetDate} 
+        signOutLabel={config.signOut.label} 
+        dinnerTarget={config.dinnerNight.targetDate} 
+        dinnerLabel={config.dinnerNight.label} 
+      />
+    </section>
+
+    <!-- Section 3: Funding Progress Bar (Signal Green exclusively for funding progress) -->
+    <section aria-label="Class Legacy Funding Progress" class="p-8 sm:p-14 rounded-3xl bg-surface border border-white/[0.08] relative overflow-hidden shadow-2xl group hover:border-white/[0.15] transition-all duration-500">
+      <div class="absolute -top-32 -right-32 w-96 h-96 bg-radial-gold opacity-15 pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 relative z-10">
+        <div class="max-w-xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-signal-green/10 border border-signal-green/30 text-signal-green font-mono text-xs uppercase tracking-widest mb-3">
+            <span>Live Class Contributions</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-text">Class Projects & Dinner Fund</h2>
+          <p class="text-base font-body text-muted mt-3 leading-relaxed">
+            Tracking our class contributions toward the ₦30,000 fee, which covers our departmental legacy projects, customized sashes, graduation dinner, and website.
+          </p>
+        </div>
+        <div class="flex flex-col items-start md:items-end p-6 rounded-2xl bg-ink-950 border border-white/[0.06] shrink-0">
+          <span class="font-mono text-5xl font-bold text-signal-green tabular-nums tracking-tight">{finance.percentage}%</span>
+          <span class="text-xs font-mono text-muted uppercase tracking-wider mt-1">
+            ₦{finance.totalPaid.toLocaleString()} total contributed
+          </span>
+        </div>
+      </div>
+
+      <!-- Single live signal green progress bar -->
+      <div class="w-full h-5 rounded-full bg-ink-950 border border-white/[0.1] overflow-hidden p-0.5 mb-8 shadow-inner relative z-10">
+        <div 
+          class="h-full rounded-full bg-signal-green transition-all duration-1000 shadow-[0_0_16px_rgba(34,197,94,0.4)]"
+          style={`width: ${Math.max(2, finance.percentage)}%;`}
+        ></div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-white/[0.06] relative z-10">
+        <span class="text-xs font-mono text-muted">Official Class Financial Records</span>
+        <a href="/finance" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-xs font-mono uppercase tracking-wider font-semibold text-gold-300 hover:text-gold-200 border border-white/[0.08] transition-all">
+          <span>View Full Finance Details</span>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 4: Award Standings Snapshot -->
+    <section aria-label="Class Awards Standings">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-l-2 border-gold-500 pl-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-gold-400 font-semibold">Class Awards</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-text mt-1">Current Award Standings</h2>
+          <p class="text-sm font-body text-muted mt-2 max-w-xl">
+            See the leading nominees for our graduation awards! Every vote is verified and counted fairly through our financial contributions.
+          </p>
+        </div>
+        <a href="/awards" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface hover:bg-white/[0.06] border border-white/[0.1] text-xs font-mono uppercase tracking-wider text-gold-300 transition-all font-semibold shrink-0">
+          <span>View All Award Categories</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {awards.categories.slice(0, 2).map(cat => (
+          <div class="p-8 rounded-3xl bg-surface border border-white/[0.08] flex flex-col justify-between hover:border-gold-500/40 transition-all duration-500 shadow-xl group">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono mb-4">
+                <span class="uppercase tracking-wider px-3 py-1 rounded-md bg-gold-500/10 text-gold-300 border border-gold-500/20 font-semibold">{cat.tier} Tier Category</span>
+                <span class="text-muted font-semibold">{cat.nominees.length} Nominees</span>
+              </div>
+              <h3 class="font-display text-2xl sm:text-3xl font-bold text-text group-hover:text-gold-300 transition-colors">{cat.name}</h3>
+              
+              <div class="mt-8 flex flex-col gap-3.5">
+                {cat.nominees.map((nom, idx) => (
+                  <div class="flex items-center justify-between p-4 rounded-2xl bg-ink-950 border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+                    <div class="flex items-center gap-4">
+                      <span class="font-mono text-xs font-bold text-gold-500 w-6 h-6 rounded-full bg-gold-500/10 flex items-center justify-center border border-gold-500/30">
+                        {idx + 1}
+                      </span>
+                      <span class="font-display text-lg text-text font-semibold">{nom.name}</span>
+                    </div>
+                    <span class="font-mono text-xs text-muted tabular-nums bg-white/[0.04] px-3 py-1 rounded-md border border-white/[0.04]">
+                      <strong class="text-text font-bold">{nom.votes}</strong> {nom.votes === 1 ? 'vote' : 'votes'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 5: Student Directory Preview (Featuring seeded 400L Roster Records) -->
+    <section aria-label="Student Directory Preview" class="rounded-3xl bg-gradient-to-br from-surface via-ink-950 to-surface border border-white/[0.08] p-8 sm:p-14 relative overflow-hidden shadow-2xl">
+      <div class="absolute inset-0 bg-radial-gold opacity-20 pointer-events-none"></div>
+
+      <div class="max-w-3xl mx-auto text-center flex flex-col items-center relative z-10 mb-12">
+        <span class="px-3.5 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 font-mono text-xs uppercase tracking-widest font-semibold mb-4">
+          Class Directory • 70 Physics Graduates
+        </span>
+        <h2 class="font-display text-4xl sm:text-6xl font-bold text-text tracking-tight">
+          Meet Our Graduating Students
+        </h2>
+        <p class="mt-4 text-base sm:text-lg font-body text-muted max-w-2xl leading-relaxed">
+          Explore our complete class directory. Look up graduating students, check out their photos, and see their award nominations and biographies.
+        </p>
+      </div>
+
+      <!-- Featured Roster Cards Preview Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10 mb-12">
+        {featuredStudents.map(student => (
+          <a href={`/students/${student.slug}`} class="group p-5 rounded-2xl bg-ink-950/80 border border-white/[0.08] hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-1 text-decoration-none shadow-lg">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[10px] font-semibold text-gold-300 px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] truncate">
+                {student.matricNumber || 'PHYS/2024'}
+              </span>
+              <span class="text-gold-400 font-mono text-xs group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            {student.photo ? (
+              <div class="w-full aspect-square rounded-xl overflow-hidden mb-3 bg-surface border border-white/[0.06]">
+                <img src={student.photo.src} alt="Student" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+              </div>
+            ) : (
+              <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-surface to-ink-950 border border-white/[0.04] mb-3 flex items-center justify-center font-display text-2xl text-gold-300 font-bold shadow-inner">
+                {(student.fullName || student.matricNumber || 'Q')[0]?.toUpperCase()}
+              </div>
+            )}
+            <h3 class="font-display text-lg font-bold text-text group-hover:text-gold-300 transition-colors truncate">
+              {student.fullName || student.matricNumber}
+            </h3>
+            <span class="font-mono text-[10px] text-muted block mt-0.5 uppercase">Class of 2024 Graduate</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center relative z-10">
+        <a 
+          href="/students" 
+          class="inline-flex items-center justify-center gap-3 px-12 py-4 rounded-full bg-gold-500 hover:bg-gold-400 text-ink-950 font-bold font-body text-sm transition-all shadow-xl hover:shadow-gold-glow uppercase tracking-wider"
+        >
+          <span>View Complete Student Directory</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 6: FYB Week Recap Highlight (Completed Event Frame) -->
+    <section aria-label="FYB Week Recap">
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10 border-l-2 border-gold-500 pl-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-gold-400 font-semibold">FYB Week Memories</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-text mt-1">Quantum Leap <span class="text-gold-400 font-light">— FYB Week Recap</span></h2>
+          <p class="text-base font-body text-muted mt-2 max-w-2xl leading-relaxed">
+            From July 20 to July 25, 2026, we celebrated the end of our degree across six exciting themed days. Take a look back at our favorite photos and moments!
+          </p>
+        </div>
+        <a href="/fyb-week" class="px-8 py-3.5 rounded-full bg-surface hover:bg-white/[0.06] border border-white/[0.1] text-gold-300 text-xs font-mono uppercase font-semibold transition-all shrink-0">
+          View FYB Week Gallery →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {fybWeek.days.slice(0, 3).map((day, idx) => (
+          <a href="/fyb-week" class="group p-8 rounded-3xl bg-surface border border-white/[0.08] hover:border-gold-500/40 transition-all duration-500 flex flex-col justify-between shadow-xl hover:-translate-y-1">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-muted mb-4">
+                <span class="text-gold-300 font-bold">Day 0{idx + 1} • {day.date}</span>
+                <span class="text-[10px] uppercase text-gold-400 font-bold px-2.5 py-1 rounded bg-gold-500/10 border border-gold-500/20">{day.dressCode}</span>
+              </div>
+              <h3 class="font-display text-2xl sm:text-3xl font-bold text-text group-hover:text-gold-300 transition-colors">{day.title}</h3>
+              <p class="text-base font-display text-gold-400/90 mt-2 italic">"{day.themeSubtitle}"</p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-muted group-hover:text-gold-300 transition-colors">
+              <span class="font-semibold">View Day Photos</span>
+              <span class="text-gold-400 text-base font-bold group-hover:translate-x-2 transition-transform duration-300">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 7: Mangset Memorial Teaser -->
+    <section aria-label="Prof E.W. Mangset Memorial" class="p-8 sm:p-16 rounded-3xl bg-gradient-to-br from-plum-900/40 via-surface to-ink-950 border border-plum-500/40 relative overflow-hidden shadow-2xl">
+      <div class="absolute right-0 top-0 w-96 h-96 bg-radial-gold opacity-20 pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <div class="lg:col-span-4 aspect-square max-w-sm mx-auto lg:mx-0 rounded-2xl overflow-hidden border border-white/[0.14] shadow-2xl bg-ink-950 group">
+          {featuredProfImage ? (
+            <img 
+              src={featuredProfImage.metadata.src} 
+              alt="Prof. E.W. Mangset" 
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+            />
+          ) : (
+            <div class="w-full h-full flex items-center justify-center text-muted font-mono text-sm">Memorial Photo</div>
+          )}
+        </div>
+        
+        <div class="lg:col-span-8 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-plum-600/30 border border-plum-400/40 text-plum-200 font-mono text-xs uppercase tracking-widest mb-4">
+            <span>Head of Department (2025 — 2026) • In Memoriam</span>
+          </div>
+          <h2 class="font-display text-4xl sm:text-6xl font-bold text-text tracking-tight">
+            Prof. E.W. Mangset
+          </h2>
+          <p class="mt-3 font-display text-xl sm:text-2xl text-gold-300 italic">
+            "A father, a trainer, a teacher, a mentor, and a role model."
+          </p>
+          <p class="mt-4 font-body text-base sm:text-lg text-muted leading-relaxed max-w-3xl">
+            Prof. E.W. Mangset served as the Head of our Physics Department from 2025 until we sadly lost him in May 2026. He was a truly caring teacher and a guiding light for every student in our department. His teachings, kindness, and wonderful advice will forever remain in our hearts.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a 
+              href="/mangset" 
+              class="w-full sm:w-auto px-8 py-4 rounded-full bg-plum-600/60 hover:bg-plum-600/80 border border-plum-300/40 text-text text-xs font-mono uppercase font-bold tracking-wider transition-all shadow-lg hover:shadow-xl text-center"
+            >
+              View Memorial Photos
+            </a>
+            <a 
+              href="/gallery" 
+              class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] text-text text-xs font-mono uppercase font-semibold tracking-wider transition-all text-center"
+            >
+              View All Class Galleries
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Opportunities Board & Quick Preview -->
+    <section aria-label="Opportunities and Resources">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 border-l-2 border-gold-500 pl-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-gold-400 font-semibold">Career & Life After School</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-text mt-1">Opportunities & Seminars</h2>
+          <p class="text-sm font-body text-muted mt-2 max-w-xl">
+            Helpful job postings, internships, scholarships, and academic seminars for all our physics graduates.
+          </p>
+        </div>
+        <a href="/opportunities" class="px-6 py-3 rounded-full bg-surface hover:bg-white/[0.06] border border-white/[0.1] text-gold-300 text-xs font-mono uppercase tracking-wider font-semibold transition-all shrink-0">
+          View All Postings →
+        </a>
+      </div>
+
+      {opportunities.length === 0 ? (
+        <div class="p-12 rounded-3xl bg-surface border border-white/[0.08] text-center max-w-2xl mx-auto shadow-xl relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-48 h-48 bg-radial-gold opacity-20 pointer-events-none"></div>
+          <span class="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center font-mono text-gold-300 text-lg mx-auto mb-4">✦</span>
+          <h3 class="font-display text-2xl font-bold text-text">No active postings today</h3>
+          <p class="font-body text-sm text-muted mt-2 leading-relaxed">
+            When career listings, internships, or academic seminars are published by class governance, they will populate this board automatically.
+          </p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {opportunities.slice(0, 2).map((opp: any) => (
+            <div class="p-8 rounded-3xl bg-surface border border-white/[0.08] flex flex-col justify-between hover:border-gold-500/30 transition-all shadow-lg">
+              <div>
+                <span class="font-mono text-xs uppercase tracking-widest text-gold-400 font-bold block mb-2">{opp.type || 'Listing'}</span>
+                <h3 class="font-display text-2xl font-bold text-text">{opp.title}</h3>
+                <p class="font-body text-sm text-muted mt-2 leading-relaxed">{opp.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+
+  </div>
+</Layout>

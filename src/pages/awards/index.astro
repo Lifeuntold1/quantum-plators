@@ -1,0 +1,70 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getAwards } from '../../lib/data';
+
+const awards = getAwards();
+---
+
+<Layout
+  title="Class Honors & Awards Board | Quantum Plators Physics '24"
+  description="Explore public award category standings, verified nominees, and live vote tallies for the Physics Class of 2024."
+>
+  <div class="flex flex-col gap-14 max-w-5xl mx-auto">
+    
+    <!-- Header -->
+    <div class="text-left max-w-3xl">
+      <span class="text-xs font-mono uppercase tracking-widest text-gold-400">Class of 2024 Honors</span>
+      <h1 class="font-display text-4xl sm:text-6xl font-bold text-text mt-2 tracking-tight">
+        Award Standings
+      </h1>
+      <p class="mt-4 text-base sm:text-lg font-body text-muted leading-relaxed">
+        Check out the current standings for our class graduation awards. Voting is verified through our class financial contributions, and counts are updated regularly.
+      </p>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="flex flex-col gap-10">
+      {awards.categories.map((category) => (
+        <div class="rounded-3xl bg-surface border border-white/[0.08] p-6 sm:p-10 relative overflow-hidden shadow-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.06]">
+            <div>
+              <span class="text-xs font-mono text-gold-400 tracking-wider uppercase">{category.tier} Level Category</span>
+              <h2 class="font-display text-2xl sm:text-3xl font-semibold text-text mt-1">{category.name}</h2>
+            </div>
+            <div class="px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-muted w-fit">
+              {category.nominees.length} {category.nominees.length === 1 ? 'Nominee' : 'Nominees'}
+            </div>
+          </div>
+
+          <!-- Nominee Standings List -->
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {category.nominees.map((nom, index) => (
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between hover:border-gold-500/30 transition-all group">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-gold-500/10 border border-gold-500/20 text-gold-300">
+                      Rank #{index + 1}
+                    </span>
+                    <span class="font-mono text-sm font-semibold text-text tabular-nums">
+                      {nom.votes} {nom.votes === 1 ? 'Vote' : 'Votes'}
+                    </span>
+                  </div>
+                  <h3 class="font-display text-xl font-semibold text-text group-hover:text-gold-300 transition-colors">
+                    {nom.name}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="p-6 rounded-2xl bg-ink-950 border border-white/[0.04] text-center">
+      <p class="text-xs font-mono text-muted">
+        To cast or confirm your votes, please reach out to our Class Finance or Social Committee with your payment confirmation.
+      </p>
+    </div>
+
+  </div>
+</Layout>

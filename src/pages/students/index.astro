@@ -1,0 +1,43 @@
+---
+export const prerender = false;
+
+import Layout from '../../components/Layout.astro';
+import StudentSearch from '../../components/StudentSearch.tsx';
+import { getStudents } from '../../lib/data';
+
+const students = await getStudents();
+
+// Format student items for the client search island
+const initialStudents = students.map((s) => ({
+  slug: s.slug,
+  fullName: s.fullName,
+  nickname: s.nickname,
+  matricNumber: s.matricNumber,
+  stateOfOrigin: s.stateOfOrigin,
+  hobbies: s.hobbies,
+  photoUrl: s.photo?.src || null,
+  nominationsCount: s.nominations?.length || 0,
+  isCompleteProfile: s.isCompleteProfile || false,
+}));
+---
+
+<Layout
+  title="Class Directory Vault | Quantum Plators Physics Class of '24"
+  description="Explore all 70 verified graduating physicists from the Department of Physics, University of Jos, Class of 2024."
+>
+  <div class="flex flex-col gap-12 max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="max-w-3xl border-l-2 border-gold-500 pl-6 sm:pl-10 py-1">
+      <span class="text-xs font-mono uppercase tracking-widest text-gold-400">Class of 2024 • Official Directory</span>
+      <h1 class="font-display text-4xl sm:text-6xl font-bold text-text mt-2 tracking-tight">
+        Student Directory
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-muted font-body leading-relaxed">
+        Explore our official graduating student directory! Use the search below to look up your friends, read their bios, check out their nicknames, and see their award nominations.
+      </p>
+    </div>
+
+    <!-- Client Interactive Search Island -->
+    <StudentSearch client:load initialStudents={initialStudents} />
+  </div>
+</Layout>

@@ -1,0 +1,63 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="w-full bg-ink-950 border-t border-white/[0.08] mt-20 relative">
+  <!-- Top decorative thin gold divider line -->
+  <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
+
+  <div class="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 justify-between">
+      
+      <!-- Brand & Mission Column (Span 6) -->
+      <div class="md:col-span-6 flex flex-col justify-between">
+        <div>
+          <a href="/" class="inline-flex items-center gap-3 group">
+            <div class="w-8 h-8 rounded-full border border-gold-500/40 flex items-center justify-center">
+              <span class="font-mono text-xs font-bold text-gold-400">QP</span>
+            </div>
+            <span class="font-display text-xl font-semibold tracking-wider text-text">Quantum Plators</span>
+          </a>
+          <p class="mt-4 text-sm text-muted max-w-md leading-relaxed font-body">
+            The official graduation web platform for the Class of 2024, Department of Physics, University of Jos.
+          </p>
+        </div>
+
+        <div class="mt-8 text-xs font-mono text-gold-500/70 tracking-widest uppercase">
+          Theme: Quantum Leap
+        </div>
+      </div>
+
+      <!-- Quick Navigation (Span 3) -->
+      <div class="md:col-span-3 flex flex-col gap-3">
+        <span class="text-xs font-mono tracking-widest uppercase text-text font-semibold">Quick Navigation</span>
+        <ul class="flex flex-col gap-2 text-sm text-muted font-body">
+          <li><a href="/students" class="hover:text-gold-300 transition-colors">Student Directory</a></li>
+          <li><a href="/countdown" class="hover:text-gold-300 transition-colors">Countdown</a></li>
+          <li><a href="/fyb-week" class="hover:text-gold-300 transition-colors">FYB Week Recap</a></li>
+          <li><a href="/gallery" class="hover:text-gold-300 transition-colors">Photo Gallery</a></li>
+          <li><a href="/awards" class="hover:text-gold-300 transition-colors">Award Standings</a></li>
+        </ul>
+      </div>
+
+      <!-- Governance & Legacy (Span 3) -->
+      <div class="md:col-span-3 flex flex-col gap-3">
+        <span class="text-xs font-mono tracking-widest uppercase text-text font-semibold">More Resources</span>
+        <ul class="flex flex-col gap-2 text-sm text-muted font-body">
+          <li><a href="/finance" class="hover:text-gold-300 transition-colors">Financial Dashboard</a></li>
+          <li><a href="/mangset" class="hover:text-gold-300 transition-colors">Prof. E.W. Mangset Memorial</a></li>
+          <li><a href="/opportunities" class="hover:text-gold-300 transition-colors">Opportunities & Seminars</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright & Attribution Bar -->
+    <div class="mt-16 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
+      <p>© {currentYear} Quantum Plators (Physics Class of '24). All rights reserved.</p>
+      <p class="text-gold-300/90 font-body text-xs sm:text-sm tracking-wide">
+        Designed with ❤️ by <a href="https://eoajagbe.name.ng" target="_blank" rel="noopener noreferrer" class="text-gold-400 hover:text-[#F8F8FA] underline decoration-gold-500/60 hover:decoration-white font-semibold transition-all">Life Untold</a>
+      </p>
+    </div>
+  </div>
+</footer>

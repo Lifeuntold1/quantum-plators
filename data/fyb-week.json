@@ -1,0 +1,54 @@
+{
+  "theme": "Quantum Leap",
+  "committee": "Social Planning Committee",
+  "days": [
+    {
+      "date": "2026-07-20",
+      "dayName": "Monday",
+      "title": "Corporate Day",
+      "themeSubtitle": "The Activation Energy",
+      "dressCode": "Corporate",
+      "galleryFolder": "assets/images/events/fyb-week/2026-07-20-corporate-day"
+    },
+    {
+      "date": "2026-07-21",
+      "dayName": "Tuesday",
+      "title": "Denim on Denim",
+      "themeSubtitle": "Superconducting Pairs",
+      "dressCode": "Denim",
+      "galleryFolder": "assets/images/events/fyb-week/2026-07-21-denim-on-denim"
+    },
+    {
+      "date": "2026-07-22",
+      "dayName": "Wednesday",
+      "title": "Jersey Day",
+      "themeSubtitle": "Orbital Momentum",
+      "dressCode": "Sportswear / Jersey",
+      "galleryFolder": "assets/images/events/fyb-week/2026-07-22-jersey-day"
+    },
+    {
+      "date": "2026-07-23",
+      "dayName": "Thursday",
+      "title": "Old School Costume",
+      "themeSubtitle": "Classical Mechanics",
+      "dressCode": "Vintage / Old School",
+      "galleryFolder": "assets/images/events/fyb-week/2026-07-23-old-school-costume"
+    },
+    {
+      "date": "2026-07-24",
+      "dayName": "Friday",
+      "title": "Cultural Day",
+      "themeSubtitle": "Harmonic Resonance",
+      "dressCode": "Traditional Attire",
+      "galleryFolder": "assets/images/events/fyb-week/2026-07-24-cultural-day"
+    },
+    {
+      "date": "2026-07-25",
+      "dayName": "Saturday",
+      "title": "Class Picnic & Sign-out",
+      "themeSubtitle": "Ground State Relaxation",
+      "dressCode": "Casual / Custom Tee",
+      "galleryFolder": "assets/images/events/fyb-week/2026-07-25-class-picnic-signout"
+    }
+  ]
+}

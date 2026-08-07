@@ -1,0 +1,159 @@
+---
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Quantum Plators | Physics Class of 2024, University of Jos",
+  description = "Official digital platform and historic vault for the Quantum Plators, Department of Physics Class of 2024, University of Jos.",
+  canonical = "https://quantumplators.netlify.app",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-ink-950 text-[#F8F8FA] font-body antialiased selection:bg-gold-500 selection:text-ink-950">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0B0B0D" />
+    <meta name="color-scheme" content="dark" />
+    
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts with swap display for optimum performance and editorial typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style is:global>
+      :root {
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Reduced motion compliance */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* Base focus styles for accessibility and keyboard operability */
+      a:focus-visible, button:focus-visible, input:focus-visible {
+        outline: 2px solid #C9A24B;
+        outline-offset: 4px;
+      }
+
+      /* High-contrast and fluid link transitions */
+      a, button {
+        transition: all 0.25s var(--ease-smooth);
+      }
+
+      /* Custom delicate scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0B0B0D;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(201, 162, 75, 0.35);
+        border-radius: 999px;
+        border: 2px solid #0B0B0D;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #C9A24B;
+      }
+
+      /* Ambient floating lighting animations */
+      @keyframes orbit-float-1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-50px, 60px) scale(1.15); }
+      }
+      @keyframes orbit-float-2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(60px, -50px) scale(1.2); }
+      }
+      .animate-orbit-1 {
+        animation: orbit-float-1 20s ease-in-out infinite;
+      }
+      .animate-orbit-2 {
+        animation: orbit-float-2 24s ease-in-out infinite;
+      }
+
+      /* Global Scroll Reveal & Motion System */
+      .reveal-section {
+        opacity: 0;
+        transform: translateY(36px);
+        transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        will-change: opacity, transform;
+      }
+      .reveal-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Scientific Dot Matrix Canvas */
+      .bg-dot-matrix {
+        background-image: radial-gradient(rgba(201, 162, 75, 0.09) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col relative overflow-x-hidden bg-ink-950 bg-dot-matrix text-[#F8F8FA]">
+    <!-- Dynamic multi-layered ambient light field -->
+    <div class="pointer-events-none fixed -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-gold-500/10 blur-[130px] opacity-70 animate-orbit-1 z-0"></div>
+    <div class="pointer-events-none fixed top-1/2 -left-64 w-[700px] h-[700px] rounded-full bg-plum-600/15 blur-[150px] opacity-60 animate-orbit-2 z-0"></div>
+    <div class="pointer-events-none fixed -bottom-48 right-1/4 w-[500px] h-[500px] rounded-full bg-gold-500/10 blur-[140px] opacity-50 z-0"></div>
+
+    <!-- Welcoming Executive Header Bar -->
+    <div class="w-full bg-gradient-to-r from-ink-950 via-plum-950/80 to-ink-950 border-b border-gold-500/20 py-2 px-4 text-center text-[11px] font-mono uppercase tracking-widest text-gold-300 relative z-50 flex items-center justify-center gap-3 shadow-sm">
+      <span class="inline-block w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+      <span>Welcome to the Official Vault of the Physics Class of 2024 • Theme: Quantum Leap</span>
+    </div>
+
+    <Nav />
+    <main class="flex-1 w-full max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 py-10 sm:py-16 relative z-10">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Automated Scroll Reveal Engine Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Observe sections and animated cards for fluid entrance
+        const targetElements = document.querySelectorAll('main > div > section, main > div > div > section, .reveal-target');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              // Unobserve to run animation once for smooth performance
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        targetElements.forEach((el, index) => {
+          el.classList.add('reveal-section');
+          // Apply gentle stagger delay for elements in sequence
+          if (index % 3 === 1) (el as HTMLElement).style.transitionDelay = '100ms';
+          if (index % 3 === 2) (el as HTMLElement).style.transitionDelay = '200ms';
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

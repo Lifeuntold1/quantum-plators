@@ -1,0 +1,14 @@
+{
+  "signOut": {
+    "targetDate": "2026-08-22T14:30:00+01:00",
+    "label": "Sign-Out"
+  },
+  "dinnerNight": {
+    "targetDate": null,
+    "label": "Dinner & Awards Night"
+  },
+  "sheets": {
+    "students": "123L0bms0FDQcheS0O_46Nxc_XFj6-2xFXN7V2hvjsE4",
+    "finance": "1q-1dAUPRYSgkHb1C4J2nk6BuToC7iNFkyqblSPZHsJo"
+  }
+}

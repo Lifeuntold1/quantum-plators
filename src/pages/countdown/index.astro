@@ -1,0 +1,45 @@
+---
+import Layout from '../../components/Layout.astro';
+import Countdown from '../../components/Countdown.tsx';
+import { getConfig } from '../../lib/data';
+
+const config = getConfig();
+---
+
+<Layout
+  title="Live Countdowns | Quantum Plators Physics Class of '24"
+  description="Counting down to our official Sign-Out celebration and Graduation Dinner & Awards Night for the Physics Class of 2024, University of Jos."
+>
+  <div class="flex flex-col gap-12 max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="text-left max-w-3xl border-l-2 border-gold-500 pl-6 sm:pl-10 py-2">
+      <div class="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-gold-400 mb-3">
+        <span>Class of 2024 • Milestones</span>
+      </div>
+      <h1 class="font-display text-4xl sm:text-7xl font-bold tracking-tight text-text leading-[1.08]">
+        Countdown to <span class="text-gold-400 font-light block sm:inline">Our Big Days</span>
+      </h1>
+      <p class="mt-6 text-base sm:text-xl font-body text-muted font-light leading-relaxed max-w-2xl">
+        Counting down every single second until our official Sign-Out celebration and Graduation Dinner & Awards Night. Stay tuned as we mark the proud completion of our physics degree at the University of Jos!
+      </p>
+    </div>
+
+    <!-- Countdown Island -->
+    <div class="mt-2">
+      <Countdown 
+        client:load 
+        signOutTarget={config.signOut.targetDate} 
+        signOutLabel={config.signOut.label} 
+        dinnerTarget={config.dinnerNight.targetDate} 
+        dinnerLabel={config.dinnerNight.label} 
+      />
+    </div>
+
+    <!-- Footer Note -->
+    <div class="p-6 rounded-2xl bg-ink-950 border border-white/[0.04] text-center max-w-2xl mx-auto">
+      <p class="font-mono text-xs text-muted leading-relaxed">
+        Times and dates are updated regularly by our Class Executive and Social Committees.
+      </p>
+    </div>
+  </div>
+</Layout>
