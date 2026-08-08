@@ -62,24 +62,8 @@ export const Countdown: React.FC<CountdownProps> = ({
     </div>
   );
 
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return (
-      <div className="w-full my-8 opacity-0">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          <div className="lg:col-span-7 h-96"></div>
-          <div className="lg:col-span-5 h-96"></div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="w-full my-8" id="countdown-section">
+    <div className="w-full my-8" id="countdown-section" suppressHydrationWarning>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
         {/* Sign-out Countdown Card with Signature Gold Planetary Orbit Motif */}

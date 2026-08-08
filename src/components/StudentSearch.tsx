@@ -29,39 +29,17 @@ export const StudentSearch: React.FC<StudentSearchProps> = ({ initialStudents = 
       result = result.filter(s => s.isCompleteProfile);
     }
 
-    if (!searchQuery.trim()) return result;
-    
-    const query = searchQuery.toLowerCase().trim();
-    return result.filter((student) => {
-      const nameMatch = student.fullName?.toLowerCase().includes(query);
-      const matricMatch = student.matricNumber?.toLowerCase().includes(query);
-      const nicknameMatch = student.nickname?.toLowerCase().includes(query);
-      return nameMatch || matricMatch || nicknameMatch;
-    });
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      result = result.filter(s => 
+        (s.fullName && s.fullName.toLowerCase().includes(q)) ||
+        (s.nickname && s.nickname.toLowerCase().includes(q)) ||
+        (s.matricNumber && s.matricNumber.toLowerCase().includes(q))
+      );
+    }
+
+    return result;
   }, [initialStudents, searchQuery, activeFilter]);
-
-  // Client-side hydration safeguard
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => setIsMounted(true), []);
-
-  if (!isMounted) {
-    return (
-      <div className="w-full flex flex-col gap-10 opacity-50 animate-pulse">
-        <div className="w-full max-w-3xl mx-auto flex flex-col gap-6">
-          <div className="w-full h-14 bg-surface border border-white/[0.1] rounded-2xl"></div>
-          <div className="flex gap-4">
-            <div className="w-32 h-8 bg-surface rounded-lg"></div>
-            <div className="w-32 h-8 bg-surface rounded-lg"></div>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} className="rounded-2xl bg-surface border border-white/[0.08] h-80"></div>
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full flex flex-col gap-10" id="student-search">

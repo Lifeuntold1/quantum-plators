@@ -12,7 +12,23 @@ const fliersByCategory = fliersData.reduce((acc, flier) => {
   return acc;
 }, {} as Record<string, typeof fliersData>);
 
-const flierCategories = Object.keys(fliersByCategory).sort();
+const juniorCategories = [
+  "Class Representative of the Year",
+  "Fresher of the Year (Male)",
+  "Fresher of the Year (Female)",
+  "Entertainer of the Year",
+  "Content Creator of the Year (100L - 300L)",
+  "Best Emerging Leader",
+  "Most Dedicated Student"
+];
+
+const flierCategories = Object.keys(fliersByCategory).sort((a, b) => {
+  const aIsJunior = juniorCategories.includes(a);
+  const bIsJunior = juniorCategories.includes(b);
+  if (aIsJunior && !bIsJunior) return 1;
+  if (!aIsJunior && bIsJunior) return -1;
+  return a.localeCompare(b);
+});
 ---
 
 <Layout
@@ -51,7 +67,7 @@ const flierCategories = Object.keys(fliersByCategory).sort();
               <h2 class="font-display text-2xl sm:text-3xl font-semibold text-text mt-1">{catName}</h2>
             </div>
             <div class="px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-muted w-fit">
-              {fliersByCategory[catName].length} {fliersByCategory[catName].length === 1 ? 'Flier' : 'Fliers'}
+              {fliersByCategory[catName].length} {fliersByCategory[catName].length === 1 ? 'Nominee' : 'Nominees'}
             </div>
           </div>
 

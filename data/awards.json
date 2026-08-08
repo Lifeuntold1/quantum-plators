@@ -5,9 +5,18 @@
       "name": "Political Icon of the Year",
       "tier": "400L",
       "nominees": [
-        { "name": "Yarima Nan'akyen", "votes": 0 },
-        { "name": "Katbam Christopher Tohomdet", "votes": 0 },
-        { "name": "Josiah Nnyia", "votes": 0 }
+        {
+          "name": "Yarima Nan'akyen",
+          "votes": 0
+        },
+        {
+          "name": "Katbam Christopher Tohomdet",
+          "votes": 0
+        },
+        {
+          "name": "Josiah Nnyia",
+          "votes": 0
+        }
       ]
     },
     {
@@ -15,8 +24,14 @@
       "name": "Most Fashionable Student (Male)",
       "tier": "400L",
       "nominees": [
-        { "name": "Fortune Irabor", "votes": 0 },
-        { "name": "Buki Anthony", "votes": 0 }
+        {
+          "name": "Fortune Irabor",
+          "votes": 0
+        },
+        {
+          "name": "Buki Anthony",
+          "votes": 0
+        }
       ]
     },
     {
@@ -24,9 +39,18 @@
       "name": "Most Fashionable Student (Female)",
       "tier": "400L",
       "nominees": [
-        { "name": "Cynthia Azodo", "votes": 0 },
-        { "name": "Joy Ogbonna Ebube", "votes": 0 },
-        { "name": "Nanbam Dabang", "votes": 0 }
+        {
+          "name": "Cynthia Azodo",
+          "votes": 0
+        },
+        {
+          "name": "Joy Ogbonna Ebube",
+          "votes": 0
+        },
+        {
+          "name": "Nanbam Dabang",
+          "votes": 0
+        }
       ]
     },
     {
@@ -34,9 +58,18 @@
       "name": "Most Social Student (Male)",
       "tier": "400L",
       "nominees": [
-        { "name": "Fortune Irabor", "votes": 0 },
-        { "name": "Paschal Nerat", "votes": 0 },
-        { "name": "Prince Michael", "votes": 0 }
+        {
+          "name": "Fortune Irabor",
+          "votes": 0
+        },
+        {
+          "name": "Paschal Nerat",
+          "votes": 0
+        },
+        {
+          "name": "Prince Michael",
+          "votes": 0
+        }
       ]
     },
     {
@@ -44,8 +77,14 @@
       "name": "Most Social Student (Female)",
       "tier": "400L",
       "nominees": [
-        { "name": "Lohkum Esther", "votes": 0 },
-        { "name": "Brown Ndifreke", "votes": 0 }
+        {
+          "name": "Lohkum Esther",
+          "votes": 0
+        },
+        {
+          "name": "Brown Ndifreke",
+          "votes": 0
+        }
       ]
     },
     {
@@ -53,9 +92,18 @@
       "name": "Student Brand of the Year (Male)",
       "tier": "400L",
       "nominees": [
-        { "name": "John Mayowa - Jhon Mobile", "votes": 0 },
-        { "name": "Olamide Orisande - GDP Gadgets", "votes": 0 },
-        { "name": "Pishing Jirit - Alive Technology", "votes": 0 }
+        {
+          "name": "John Mayowa - Jhon Mobile",
+          "votes": 0
+        },
+        {
+          "name": "Olamide Orisande - GDP Gadgets",
+          "votes": 0
+        },
+        {
+          "name": "Pishing Jirit - Alive Technology",
+          "votes": 0
+        }
       ]
     },
     {
@@ -63,8 +111,14 @@
       "name": "Student Brand of the Year (Female)",
       "tier": "400L",
       "nominees": [
-        { "name": "Joy Ogbonna - Jay's Emporium", "votes": 0 },
-        { "name": "Brown Ndifreke - The Scarf Muse", "votes": 0 }
+        {
+          "name": "Joy Ogbonna - Jay's Emporium",
+          "votes": 0
+        },
+        {
+          "name": "Brown Ndifreke - The Scarf Muse",
+          "votes": 0
+        }
       ]
     },
     {
@@ -72,9 +126,18 @@
       "name": "Sportsman of the Year",
       "tier": "400L",
       "nominees": [
-        { "name": "Lawal Abubakar", "votes": 0 },
-        { "name": "Prince Michael", "votes": 0 },
-        { "name": "Paschal Nerat", "votes": 0 }
+        {
+          "name": "Lawal Abubakar",
+          "votes": 0
+        },
+        {
+          "name": "Paschal Nerat",
+          "votes": 0
+        },
+        {
+          "name": "Prince Michael",
+          "votes": 0
+        }
       ]
     },
     {
@@ -82,9 +145,18 @@
       "name": "Content Creator of the Year",
       "tier": "400L",
       "nominees": [
-        { "name": "Azodo Cynthia", "votes": 0 },
-        { "name": "Brown Ndifreke", "votes": 0 },
-        { "name": "Ajagbe Emmanuel", "votes": 0 }
+        {
+          "name": "Azodo Cynthia",
+          "votes": 0
+        },
+        {
+          "name": "Brown Ndifreke",
+          "votes": 0
+        },
+        {
+          "name": "Ajagbe Emmanuel",
+          "votes": 0
+        }
       ]
     },
     {
@@ -92,10 +164,131 @@
       "name": "Most Supportive Peer of the Year",
       "tier": "400L",
       "nominees": [
-        { "name": "Ajagbe Emmanuel", "votes": 0 },
-        { "name": "Sule Charity", "votes": 0 },
-        { "name": "Ibrahim Umar", "votes": 0 }
+        {
+          "name": "Ajagbe Emmanuel",
+          "votes": 0
+        },
+        {
+          "name": "Sule Charity",
+          "votes": 0
+        },
+        {
+          "name": "Ibrahim Umar",
+          "votes": 0
+        }
       ]
+    },
+    {
+      "id": "category-11",
+      "name": "100-300L Class Representative of the Year",
+      "description": "Recognizing outstanding 100-300L students.",
+      "nominees": [
+        {
+          "name": "Victor Patrick",
+          "votes": 0
+        },
+        {
+          "name": "Nimlam Nankat",
+          "votes": 0
+        }
+      ],
+      "tier": "100-300L"
+    },
+    {
+      "id": "category-12",
+      "name": "100-300L Fresher of the Year (Male)",
+      "description": "Recognizing outstanding 100-300L students.",
+      "nominees": [
+        {
+          "name": "Dalyop Alfred James",
+          "votes": 0
+        },
+        {
+          "name": "Essesseh Danladi",
+          "votes": 0
+        }
+      ],
+      "tier": "100-300L"
+    },
+    {
+      "id": "category-13",
+      "name": "100-300L Fresher of the Year (Female)",
+      "description": "Recognizing outstanding 100-300L students.",
+      "nominees": [
+        {
+          "name": "Gift Osayande",
+          "votes": 0
+        },
+        {
+          "name": "Jessica Taiwo",
+          "votes": 0
+        }
+      ],
+      "tier": "100-300L"
+    },
+    {
+      "id": "category-14",
+      "name": "100-300L Entertainer of the Year",
+      "description": "Recognizing outstanding 100-300L students.",
+      "nominees": [
+        {
+          "name": "Yeipyeng Bwede",
+          "votes": 0
+        },
+        {
+          "name": "Francis Kelechi (Junior Classic)",
+          "votes": 0
+        }
+      ],
+      "tier": "100-300L"
+    },
+    {
+      "id": "category-15",
+      "name": "100-300L Content Creator of the Year",
+      "description": "Recognizing outstanding 100-300L students.",
+      "nominees": [
+        {
+          "name": "Francis Kelechi (Junior Classic)",
+          "votes": 0
+        },
+        {
+          "name": "James Adeniyi",
+          "votes": 0
+        }
+      ],
+      "tier": "100-300L"
+    },
+    {
+      "id": "category-16",
+      "name": "100-300L Best Emerging Leader",
+      "description": "Recognizing outstanding 100-300L students.",
+      "nominees": [
+        {
+          "name": "Nimlam Nankat",
+          "votes": 0
+        },
+        {
+          "name": "Oduh David",
+          "votes": 0
+        }
+      ],
+      "tier": "100-300L"
+    },
+    {
+      "id": "category-17",
+      "name": "100-300L Most Dedicated Student",
+      "description": "Recognizing outstanding 100-300L students.",
+      "nominees": [
+        {
+          "name": "Friday Nizhi",
+          "votes": 0
+        },
+        {
+          "name": "Nyam Mary Simi",
+          "votes": 0
+        }
+      ],
+      "tier": "100-300L"
     }
   ]
 }

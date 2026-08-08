@@ -165,13 +165,12 @@ export function getAllGallerySectioned(): { id: string; title: string; date?: st
   
   // Master vault event folders including group shots and FYB week memories
   const eventSections = [
-    { folder: 'assets/images/events/class-group', title: 'Class of 2024 Group Photography & Banner Shots', date: 'Graduation Year' },
     { folder: 'assets/images/events/fyb-week/2026-07-20-corporate-day', title: 'Corporate Day (FYB Week)', date: '2026-07-20' },
     { folder: 'assets/images/events/fyb-week/2026-07-21-denim-on-denim', title: 'Denim on Denim (FYB Week)', date: '2026-07-21' },
     { folder: 'assets/images/events/fyb-week/2026-07-22-jersey-day', title: 'Jersey Day (FYB Week)', date: '2026-07-22' },
     { folder: 'assets/images/events/fyb-week/2026-07-23-old-school-costume', title: 'Old School Costume (FYB Week)', date: '2026-07-23' },
     { folder: 'assets/images/events/fyb-week/2026-07-24-cultural-day', title: 'Cultural Day (FYB Week)', date: '2026-07-24' },
-    { folder: 'assets/images/events/fyb-week/2026-07-25-class-picnic-signout', title: 'Class Picnic & Sign-out (FYB Week)', date: '2026-07-25' },
+    { folder: 'assets/images/events/fyb-week/2026-07-25-class-picnic-signout', title: 'Class Picnic (FYB Week)', date: '2026-07-25' },
     { folder: 'assets/images/events/dinner-night', title: 'Dinner & Awards Night', date: 'TBD' },
     { folder: 'assets/images/prof', title: 'Prof. E.W. Mangset Memorial Vault', date: 'Class of 2024' }
   ];

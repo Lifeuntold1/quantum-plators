@@ -1,9 +1,10 @@
 ---
 import Layout from '../../components/Layout.astro';
-import { getAllGallerySectioned } from '../../lib/media';
+import { getAllGallerySectioned, getEventDayImages } from '../../lib/media';
+import { AlbumSlider } from '../../components/AlbumSlider';
 
 const sections = getAllGallerySectioned();
-const totalMediaCount = sections.reduce((acc, s) => acc + s.items.length, 0);
+const classPhotos = getEventDayImages('assets/images/class');
 ---
 
 <Layout
@@ -19,12 +20,29 @@ const totalMediaCount = sections.reduce((acc, s) => acc + s.items.length, 0);
         Photo Gallery
       </h1>
       <p class="mt-4 text-base sm:text-lg font-body text-muted leading-relaxed">
-        Explore our photos across departmental events, FYB Week celebration days, and special memorials. Currently showcasing {totalMediaCount} class photos.
+        Explore our photos across departmental events, FYB Week celebration days, and special memorials.
       </p>
     </div>
 
     <!-- Sectioned Vault -->
     <div class="flex flex-col gap-14">
+      
+      {classPhotos.length > 0 && (
+        <section aria-label="Class of 2024 Group Photography & Banner Shots" class="rounded-3xl bg-surface border border-white/[0.08] p-6 sm:p-10">
+          <div class="flex items-center justify-between pb-6 border-b border-white/[0.06] mb-8">
+            <div>
+              <h2 class="font-display text-2xl sm:text-3xl font-semibold text-text">Class of 2024 Group Photography & Banner Shots</h2>
+              <span class="text-xs font-mono text-gold-400 uppercase tracking-wider mt-1 block">Official Highlights</span>
+            </div>
+            <span class="text-xs font-mono text-muted px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.06]">
+              {classPhotos.length} {classPhotos.length === 1 ? 'Photo' : 'Photos'}
+            </span>
+          </div>
+
+          <AlbumSlider client:load images={classPhotos} title="Class of 2024 Group Photography & Banner Shots" />
+        </section>
+      )}
+
       {sections.map(section => (
         <section aria-label={section.title} class="rounded-3xl bg-surface border border-white/[0.08] p-6 sm:p-10">
           <div class="flex items-center justify-between pb-6 border-b border-white/[0.06] mb-8">
@@ -37,25 +55,7 @@ const totalMediaCount = sections.reduce((acc, s) => acc + s.items.length, 0);
             </span>
           </div>
 
-          {section.items.length > 0 ? (
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {section.items.map(item => (
-                <div class="aspect-square rounded-2xl overflow-hidden bg-ink-950 border border-white/[0.08] group relative">
-                  <img 
-                    src={item.metadata.src} 
-                    alt={`${section.title} photo`} 
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div class="py-10 text-center rounded-2xl bg-white/[0.01] border border-white/[0.04]">
-              <p class="font-display text-lg text-text">No Photos Yet</p>
-              <p class="font-mono text-xs text-muted mt-1">Photos for this event will be added soon.</p>
-            </div>
-          )}
+          <AlbumSlider client:load images={section.items} title={section.title} />
         </section>
       ))}
     </div>

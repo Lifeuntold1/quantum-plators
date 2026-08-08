@@ -2,6 +2,7 @@
 import Layout from '../../components/Layout.astro';
 import { getFybWeek } from '../../lib/data';
 import { getEventDayImages } from '../../lib/media';
+import { AlbumSlider } from '../../components/AlbumSlider';
 
 const fybWeek = getFybWeek();
 ---
@@ -18,7 +19,8 @@ const fybWeek = getFybWeek();
         <span>{fybWeek.committee} • FYB Week Memories</span>
       </div>
       <h1 class="font-display text-4xl sm:text-7xl font-bold tracking-tight text-text leading-[1.08]">
-        Quantum Leap <span class="text-gold-400 font-light block sm:inline">— FYB Week Recap</span>
+        Quantum Leap
+        <span class="text-gold-400 font-light block mt-4 text-4xl sm:text-6xl">FYB Week Recap</span>
       </h1>
       <p class="mt-6 text-base sm:text-xl font-body text-muted font-light leading-relaxed max-w-2xl">
         From July 20 to July 25, 2026, we celebrated our final week across six memorable themed days, marking the proud completion of our Physics degree at the University of Jos.
@@ -27,6 +29,7 @@ const fybWeek = getFybWeek();
 
     <!-- Six Chronological Day Sections -->
     <div class="flex flex-col gap-16">
+      
       {fybWeek.days.map((day, index) => {
         const photos = getEventDayImages(day.galleryFolder || '');
         
@@ -58,7 +61,7 @@ const fybWeek = getFybWeek();
               </div>
             </div>
 
-            <!-- Past-Tense Recap Text (Only rendered when genuinely present per Strict Data Rule) -->
+            <!-- Past-Tense Recap Text -->
             {(day as any).recap && (
               <div class="my-8 max-w-3xl">
                 <p class="font-body text-base sm:text-lg text-muted leading-relaxed">
@@ -67,35 +70,9 @@ const fybWeek = getFybWeek();
               </div>
             )}
 
-            <!-- Photo Gallery or Empty-Safe Day Identity Display -->
+            <!-- Interactive Album Slider -->
             <div class="mt-8">
-              {photos.length > 0 ? (
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {photos.map((photo) => (
-                    <div class="rounded-2xl overflow-hidden bg-ink-950 border border-white/[0.08] aspect-[4/3] shadow-lg group-hover:shadow-xl transition-all duration-500 relative">
-                      <img 
-                        src={photo.metadata.src} 
-                        alt={`${day.title} moment`} 
-                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" 
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                /* Empty-safe layout per Strict Data Rule: identity shown without broken gallery grids or dummy placeholders */
-                <div class="py-12 px-6 rounded-2xl bg-gradient-to-r from-ink-950 to-white/[0.01] border border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-                  <div>
-                    <span class="font-display text-xl text-text font-semibold block">{day.title} — Photo Gallery</span>
-                    <span class="font-mono text-xs text-muted mt-1 block">
-                      Photos for this day will be available shortly.
-                    </span>
-                  </div>
-                  <div class="w-12 h-12 rounded-full border border-gold-500/20 flex items-center justify-center text-gold-400/60 font-mono text-lg shrink-0">
-                    ❖
-                  </div>
-                </div>
-              )}
+              <AlbumSlider client:load images={photos} title={day.title} />
             </div>
 
           </section>
