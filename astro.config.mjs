@@ -7,4 +7,7 @@ export default defineConfig({
   output: 'server',
   adapter: netlify(),
   integrations: [tailwind(), react()],
+  vite: {
+    assetsInclude: ['**/*.HEIC', '**/*.heic', '**/*.HEIF', '**/*.heif']
+  }
 });

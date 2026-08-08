@@ -286,12 +286,31 @@ export async function getFinance(): Promise<FinanceSummary> {
 
 export function getStudentNominations(fullName?: string) {
   if (!fullName) return [];
-  const normalized = fullName.trim().toLowerCase();
+  
+  const clean = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const getTokens = (s: string) => s.toLowerCase().split(/[\s,-]+/).map(clean).filter(t => t.length > 2);
+  const nameTokens = getTokens(fullName);
+  
   const results: { categoryName: string; categoryId: string; votes: number }[] = [];
   
   awardsData.categories.forEach(cat => {
     cat.nominees.forEach(nom => {
-      if (nom.name.trim().toLowerCase() === normalized) {
+      // Remove any brackets e.g. (Jasperlite) and ignore everything after a dash (e.g. brand names)
+      const personPart = nom.name.split('-')[0].replace(/\(.*\)/g, '');
+      const nomTokens = getTokens(personPart);
+      
+      if (nomTokens.length === 0) return;
+
+      // Check if every token in the nominee name is contained within the student's full name tokens
+      // Allows for partial token matches (e.g. 'Mayowa' matching 'Oluwamayowa')
+      const isMatch = nomTokens.every(nomToken => 
+        nameTokens.some(nameToken => nameToken.includes(nomToken) || nomToken.includes(nameToken))
+      );
+      
+      // Fallback for exact string inclusion just in case tokenizer misses something short
+      const exactMatch = clean(fullName).includes(clean(personPart)) || clean(personPart).includes(clean(fullName));
+
+      if (isMatch || exactMatch) {
         results.push({
           categoryName: cat.name,
           categoryId: cat.id,
