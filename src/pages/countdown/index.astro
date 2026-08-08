@@ -4,6 +4,7 @@ import Countdown from '../../components/Countdown.tsx';
 import { getConfig } from '../../lib/data';
 
 const config = getConfig();
+import dinnerImage from '../../assets/images/events/dinner-night/dinner.jpeg';
 ---
 
 <Layout
@@ -35,8 +36,17 @@ const config = getConfig();
       />
     </div>
 
+    <!-- Dinner Night Flyer -->
+    <div class="mt-8 flex justify-center">
+      <div class="p-2 rounded-3xl bg-surface border border-gold-500/20 shadow-2xl max-w-2xl w-full">
+        <div class="overflow-hidden rounded-2xl">
+          <img src={dinnerImage.src} alt="Graduation Dinner & Awards Night Flyer" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" decoding="async" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
     <!-- Footer Note -->
-    <div class="p-6 rounded-2xl bg-ink-950 border border-white/[0.04] text-center max-w-2xl mx-auto">
+    <div class="mt-8 p-6 rounded-2xl bg-ink-950 border border-white/[0.04] text-center max-w-2xl mx-auto">
       <p class="font-mono text-xs text-muted leading-relaxed">
         Times and dates are updated regularly by our Class Executive and Social Committees.
       </p>

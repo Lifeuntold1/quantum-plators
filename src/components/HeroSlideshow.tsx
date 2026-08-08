@@ -41,7 +41,7 @@ export const HeroSlideshow: React.FC<HeroSlideshowProps> = ({ slides = [] }) => 
           </h1>
 
           <p className="mt-6 text-lg sm:text-2xl font-body text-gray-200 max-w-2xl font-light leading-relaxed drop-shadow animate-fade-in-up" style={{ animationDelay: '150ms' }}>
-            Welcome to the official platform, student directory, and history collection for our graduating class.
+            Welcome to the official platform, student directory, and history collection for the graduating class of 2024 of the department of physics.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 w-full max-w-lg">
@@ -108,7 +108,7 @@ export const HeroSlideshow: React.FC<HeroSlideshowProps> = ({ slides = [] }) => 
           Quantum Plators <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-200 via-gold-400 to-amber-200">'24</span>
         </h1>
         <p className="mt-4 text-base sm:text-2xl font-body text-gray-200 max-w-2xl font-light drop-shadow animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-          Welcome to the official platform, class directory, and history collection for the Department of Physics, University of Jos.
+          Welcome to the official platform, class directory, and history collection for the graduating class of 2024 of the department of physics.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-5 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
           <a href="/students" className="px-9 py-4 rounded-full bg-gradient-to-r from-gold-500 to-amber-400 hover:from-gold-400 hover:to-amber-300 text-ink-950 font-bold text-sm transition-all shadow-[0_0_25px_rgba(201,162,75,0.4)] hover:shadow-[0_0_35px_rgba(201,162,75,0.7)] hover:-translate-y-1">
