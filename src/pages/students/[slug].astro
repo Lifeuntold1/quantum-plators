@@ -40,7 +40,7 @@ const pageDesc = student.partingWords || `Official academic roster profile for $
         <div class="md:col-span-5">
           {student.photo ? (
             <div class="w-full aspect-[4/5] rounded-2xl overflow-hidden bg-ink-950 border border-white/[0.1] shadow-2xl relative group">
-              <img src={student.photo.src} alt={student.fullName || 'Student photo'} class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700" />
+              <img src={student.photo.src} alt={student.fullName || 'Student photo'} class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700" loading="eager" decoding="async" />
               <div class="absolute bottom-3 left-3 right-3 px-3 py-1.5 rounded-lg bg-ink-950/80 backdrop-blur-md border border-white/[0.1] text-center">
                 <span class="font-mono text-[10px] uppercase tracking-widest text-gold-300 font-semibold">Verified Portrait</span>
               </div>

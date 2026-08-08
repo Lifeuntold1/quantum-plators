@@ -28,6 +28,20 @@ const {
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Quantum Plators",
+      "url": canonical,
+      "description": description,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Physics Class of 2024, University of Jos",
+        "sameAs": ["https://www.tiktok.com/@unijosphysics2024"]
+      }
+    })} />
+
     <!-- Google Fonts with swap display for optimum performance and editorial typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

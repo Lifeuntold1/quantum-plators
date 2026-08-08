@@ -87,6 +87,7 @@ export const AlbumSlider: FC<AlbumSliderProps> = ({ images, title }) => {
           alt={`${title} cover`} 
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
           loading="lazy"
+          decoding="async"
         />
         
         {/* Hover Overlay */}
@@ -118,6 +119,7 @@ export const AlbumSlider: FC<AlbumSliderProps> = ({ images, title }) => {
                 alt={`${title} photo ${currentIndex + 1}`}
                 className="max-w-full object-contain rounded-lg shadow-2xl transition-opacity duration-300"
                 style={{ maxHeight: '85vh' }}
+                decoding="async"
               />
 
               {/* Close Button pinned to the top-right of the image */}
