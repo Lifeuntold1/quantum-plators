@@ -39,11 +39,13 @@ fliers_data = [
     {"category": "Sportsman of the Year", "nominee": "Prince Michael", "file": "PRINCE.webp"},
     {"category": "Sportsman of the Year", "nominee": "Paschal Nerat", "file": "POPE.webp"},
 
-    # Content Creator of the Year
-    {"category": "Content Creator of the Year", "nominee": "Cynthia Azodo", "file": "CYNTHIA 2.webp"},
-    {"category": "Content Creator of the Year", "nominee": "James Adeniyi", "file": "JAMES ADENIYI.webp"},
-    {"category": "Content Creator of the Year", "nominee": "Ogbonna Joy", "file": "JOY (2).webp"},
-    {"category": "Content Creator of the Year", "nominee": "Francis Kelechi (Junior Classic)", "file": "JUNIOR CLASSIC CC.webp"},
+    # Content Creator of the Year (400L)
+    {"category": "Content Creator of the Year (400L)", "nominee": "Cynthia Azodo", "file": "CYNTHIA 2.webp"},
+    {"category": "Content Creator of the Year (400L)", "nominee": "Ogbonna Joy", "file": "JOY (2).webp"},
+
+    # Content Creator of the Year (100L - 300L)
+    {"category": "Content Creator of the Year (100L - 300L)", "nominee": "James Adeniyi", "file": "JAMES ADENIYI.webp"},
+    {"category": "Content Creator of the Year (100L - 300L)", "nominee": "Francis Kelechi (Junior Classic)", "file": "JUNIOR CLASSIC CC.webp"},
 
     # Most Supportive Peer of the Year
     {"category": "Most Supportive Peer of the Year", "nominee": "Ajagbe Emmanuel", "file": "AJAGBE.webp"},
