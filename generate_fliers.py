@@ -1,0 +1,83 @@
+import json
+import os
+
+fliers_data = [
+    # Political Icon of the Year
+    {"category": "Political Icon of the Year", "nominee": "Katbam Christopher", "file": "CHRIS.webp"},
+    {"category": "Political Icon of the Year", "nominee": "Yarima Nan'akyen", "file": "NANA.webp"},
+    {"category": "Political Icon of the Year", "nominee": "Josiah Nnyia", "file": "EBUBE.webp"},
+
+    # Most Fashionable Student (Male)
+    {"category": "Most Fashionable Student (Male)", "nominee": "Buki Anthony", "file": "KOCKEY.webp"},
+    {"category": "Most Fashionable Student (Male)", "nominee": "Irabor Fortune", "file": "IRABOR.webp"},
+
+    # Most Fashionable Student (Female)
+    {"category": "Most Fashionable Student (Female)", "nominee": "Cynthia Azodo", "file": "CYNTHIA.webp"},
+    {"category": "Most Fashionable Student (Female)", "nominee": "Ogbonna Joy", "file": "JOY.webp"},
+    {"category": "Most Fashionable Student (Female)", "nominee": "Nanbam Dabang", "file": "NANBAM.webp"},
+
+    # Most Social Student (Male)
+    {"category": "Most Social Student (Male)", "nominee": "Fortune Irabor", "file": "IRABOR 2.webp"},
+    {"category": "Most Social Student (Male)", "nominee": "Paschal Nerat", "file": "POPE 2.webp"},
+    {"category": "Most Social Student (Male)", "nominee": "Prince Michael", "file": "PRINCE 2.webp"},
+
+    # Most Social Student (Female)
+    {"category": "Most Social Student (Female)", "nominee": "Esther Lohkum", "file": "ESTHER.webp"},
+    {"category": "Most Social Student (Female)", "nominee": "Brown Ndifreke", "file": "NDI.webp"},
+
+    # Student Brand of the Year (Male)
+    {"category": "Student Brand of the Year (Male)", "nominee": "Alive Technology", "file": "ALIVE TECH.webp"},
+    {"category": "Student Brand of the Year (Male)", "nominee": "GDP Gadgets", "file": "GDP.webp"},
+    {"category": "Student Brand of the Year (Male)", "nominee": "Jhon Mobile", "file": "JHON MOBILE.webp"},
+
+    # Student Brand of the Year (Female)
+    {"category": "Student Brand of the Year (Female)", "nominee": "Jay's Emporium", "file": "JAYS EMPORIUM.webp"},
+    {"category": "Student Brand of the Year (Female)", "nominee": "The Scarf Muse", "file": "SCARF MUSE.webp"},
+
+    # Sportsman of the Year
+    {"category": "Sportsman of the Year", "nominee": "Lawal Abubakar", "file": "ABU.webp"},
+    {"category": "Sportsman of the Year", "nominee": "Prince Michael", "file": "PRINCE.webp"},
+    {"category": "Sportsman of the Year", "nominee": "Paschal Nerat", "file": "POPE.webp"},
+
+    # Content Creator of the Year
+    {"category": "Content Creator of the Year", "nominee": "Cynthia Azodo", "file": "CYNTHIA 2.webp"},
+    {"category": "Content Creator of the Year", "nominee": "James Adeniyi", "file": "JAMES ADENIYI.webp"},
+    {"category": "Content Creator of the Year", "nominee": "Ogbonna Joy", "file": "JOY (2).webp"},
+    {"category": "Content Creator of the Year", "nominee": "Francis Kelechi (Junior Classic)", "file": "JUNIOR CLASSIC CC.webp"},
+
+    # Most Supportive Peer of the Year
+    {"category": "Most Supportive Peer of the Year", "nominee": "Ajagbe Emmanuel", "file": "AJAGBE.webp"},
+    {"category": "Most Supportive Peer of the Year", "nominee": "Sule Charity", "file": "CHARITY.webp"},
+    {"category": "Most Supportive Peer of the Year", "nominee": "Ibrahim Umar", "file": "IBRAHIM.webp"},
+
+    # Fresher of the Year (Male)
+    {"category": "Fresher of the Year (Male)", "nominee": "Dalyop Alfred James", "file": "DALYOP JAMES.webp"},
+    {"category": "Fresher of the Year (Male)", "nominee": "Essesseh Danladi", "file": "ESSESSEH DANLADI.webp"},
+
+    # Fresher of the Year (Female)
+    {"category": "Fresher of the Year (Female)", "nominee": "Jessica Taiwo", "file": "JESSICA TAIWO.webp"},
+    {"category": "Fresher of the Year (Female)", "nominee": "Osayande Gift", "file": "OSAYANDE GIFT.webp"},
+
+    # Most Dedicated Student
+    {"category": "Most Dedicated Student", "nominee": "Friday Nizhi", "file": "FRIDAY NIZHI.webp"},
+    {"category": "Most Dedicated Student", "nominee": "Mary Simi", "file": "MARY SIMI.webp"},
+
+    # Class Representative of the Year
+    {"category": "Class Representative of the Year", "nominee": "Nimlam Nankat", "file": "NIMLAM NANKAT CR.webp"},
+    {"category": "Class Representative of the Year", "nominee": "Victor Patrick", "file": "VICTOR PATRICK.webp"},
+
+    # Best Emerging Leader
+    {"category": "Best Emerging Leader", "nominee": "Nimlam Nankat", "file": "NIMLAM NANKAT EL.webp"},
+    {"category": "Best Emerging Leader", "nominee": "Oduh David", "file": "ODUH DAVID.webp"},
+
+    # Entertainer of the Year
+    {"category": "Entertainer of the Year", "nominee": "Francis Kelechi (Junior Classic)", "file": "JUNIOR CLASSIC ENT.webp"},
+    {"category": "Entertainer of the Year", "nominee": "Yeipyeng Bwede", "file": "YEIPYENG.webp"}
+]
+
+output_path = r"C:\Users\DELL\.gemini\antigravity\scratch\quantum\src\data\fliers.json"
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+with open(output_path, "w") as f:
+    json.dump(fliers_data, f, indent=2)
+
+print(f"Fliers data saved to {output_path}. Total fliers: {len(fliers_data)}")
