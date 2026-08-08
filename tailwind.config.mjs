@@ -52,6 +52,15 @@ export default {
         'radial-gold': 'radial-gradient(circle at top right, rgba(201, 162, 75, 0.08), transparent 50%)',
         'radial-plum': 'radial-gradient(circle at bottom left, rgba(75, 46, 92, 0.12), transparent 50%)',
       },
+      keyframes: {
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        }
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+      }
     },
   },
   plugins: [],

@@ -1,7 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
 import HeroSlideshow from '../components/HeroSlideshow.tsx';
-import Countdown from '../components/Countdown.tsx';
 import { getConfig, getFinance, getAwards, getStudents, getFybWeek, getOpportunities } from '../lib/data';
 import { getSlideshowImages, getProfImages } from '../lib/media';
 
@@ -32,22 +31,32 @@ const featuredStudents = students.slice(0, 4);
       <HeroSlideshow client:load slides={slideshowImages.map(s => ({ path: s.path, filename: s.filename, src: s.metadata.src }))} />
     </section>
 
-    <!-- Section 2: Countdown System (Ticking digits in gold orbit motif) -->
-    <section aria-label="Graduation and Dinner Countdown">
-      <div class="mb-6 max-w-2xl border-l-2 border-gold-500 pl-6">
-        <span class="text-xs font-mono uppercase tracking-widest text-gold-400 font-semibold">Live Countdown Timer</span>
-        <h2 class="font-display text-3xl sm:text-5xl font-bold text-text mt-1">Countdown to Our Big Days</h2>
-        <p class="text-sm font-body text-muted mt-2">
-          Counting down every single second until our official Sign-Out celebration and Graduation Dinner Night.
-        </p>
+    <!-- Section 2: Dedicated Countdown Banner -->
+    <section aria-label="Graduation Countdown">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-surface via-ink-950 to-surface border border-gold-500/20 p-8 sm:p-12 shadow-2xl group hover:border-gold-500/40 transition-all duration-500 hover:-translate-y-1">
+        <div class="absolute inset-0 bg-radial-gold opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity duration-700"></div>
+        <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full border border-gold-500/10 animate-[spin_60s_linear_infinite] pointer-events-none"></div>
+        
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+          <div class="max-w-xl text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+              <span>Live Event Trackers</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-text">Countdown to Our Big Days</h2>
+            <p class="text-base font-body text-muted mt-3 leading-relaxed">
+              We are counting down every single second until our official Sign-Out celebration and Graduation Dinner Night.
+            </p>
+          </div>
+          
+          <div class="shrink-0">
+            <a href="/countdown" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-gold-500 to-amber-400 hover:from-gold-400 hover:to-amber-300 text-ink-950 font-bold text-sm tracking-wide transition-all shadow-[0_0_20px_rgba(201,162,75,0.3)] hover:shadow-[0_0_35px_rgba(201,162,75,0.6)] hover:-translate-y-1">
+              <span>View Live Countdowns</span>
+              <span class="text-lg transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <Countdown 
-        client:load 
-        signOutTarget={config.signOut.targetDate} 
-        signOutLabel={config.signOut.label} 
-        dinnerTarget={config.dinnerNight.targetDate} 
-        dinnerLabel={config.dinnerNight.label} 
-      />
     </section>
 
     <!-- Section 3: Funding Progress Bar (Signal Green exclusively for funding progress) -->
