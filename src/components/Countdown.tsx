@@ -52,7 +52,6 @@ export const Countdown: React.FC<CountdownProps> = ({
 
   const renderTickingUnit = (value: number, label: string) => (
     <div className="flex flex-col items-center justify-center flex-1 p-2.5 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-ink-950/90 border border-gold-500/30 backdrop-blur-md min-w-[56px] sm:min-w-[84px] lg:min-w-[96px] relative overflow-hidden group hover:border-gold-400 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-      {/* Inner Gold Radial Glow */}
       <div className="absolute inset-0 bg-radial-gold opacity-30 group-hover:opacity-60 transition-opacity"></div>
       <span className="font-mono text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gold-300 tracking-tight tabular-nums z-10 scale-y-105">
         {String(value).padStart(2, '0')}
@@ -62,6 +61,22 @@ export const Countdown: React.FC<CountdownProps> = ({
       </span>
     </div>
   );
+
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <div className="w-full my-8 opacity-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div className="lg:col-span-7 h-96"></div>
+          <div className="lg:col-span-5 h-96"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full my-8" id="countdown-section">

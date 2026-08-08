@@ -38,21 +38,6 @@ const initialStudents = students.map((s) => ({
     </div>
 
     <!-- Client Interactive Search Island -->
-    <StudentSearch client:only="react" initialStudents={initialStudents}>
-      <div slot="fallback" class="w-full flex flex-col gap-10 opacity-50 animate-pulse">
-        <div class="w-full max-w-3xl mx-auto flex flex-col gap-6">
-          <div class="w-full h-14 bg-surface border border-white/[0.1] rounded-2xl"></div>
-          <div class="flex gap-4">
-            <div class="w-32 h-8 bg-surface rounded-lg"></div>
-            <div class="w-32 h-8 bg-surface rounded-lg"></div>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} class="rounded-2xl bg-surface border border-white/[0.08] h-80"></div>
-          ))}
-        </div>
-      </div>
-    </StudentSearch>
+    <StudentSearch client:load initialStudents={initialStudents} />
   </div>
 </Layout>

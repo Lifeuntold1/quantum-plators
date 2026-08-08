@@ -96,16 +96,6 @@
         { "name": "Sule Charity", "votes": 0 },
         { "name": "Ibrahim Umar", "votes": 0 }
       ]
-    },
-    {
-      "id": "friend-of-the-department",
-      "name": "Friend of the Department",
-      "tier": "400L",
-      "nominees": [
-        { "name": "Bamikole Nathaniel", "votes": 0 },
-        { "name": "Yakubu Emmanuel", "votes": 0 },
-        { "name": "Kim Israel Davou (Jasperlite)", "votes": 0 }
-      ]
     }
   ]
 }

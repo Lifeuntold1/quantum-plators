@@ -26,39 +26,22 @@ const finance = await getFinance();
     <div class="rounded-3xl bg-surface border border-white/[0.08] p-8 sm:p-12 relative overflow-hidden shadow-2xl">
       <div class="absolute -right-20 -top-20 w-80 h-80 bg-radial-gold opacity-20 pointer-events-none"></div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pb-8 border-b border-white/[0.06]">
+      <div class="pb-8 border-b border-white/[0.06]">
         <div>
           <span class="text-xs font-mono text-muted uppercase tracking-wider block">Total Contributions Paid</span>
-          <span class="font-mono text-3xl sm:text-4xl font-bold text-text mt-2 block tabular-nums">
+          <span class="font-mono text-4xl sm:text-5xl font-bold text-signal-green mt-2 block tabular-nums">
             ₦{finance.totalPaid.toLocaleString()}
           </span>
-        </div>
-        <div>
-          <span class="text-xs font-mono text-muted uppercase tracking-wider block">Total Percentage Reached</span>
-          <span class="font-mono text-3xl sm:text-4xl font-bold text-signal-green mt-2 block tabular-nums">
-            {finance.percentage}%
-          </span>
-        </div>
-      </div>
-
-      <div class="mt-8">
-        <div class="flex justify-between text-xs font-mono text-muted mb-2">
-          <span>Overall Progress</span>
-        </div>
-        <div class="w-full h-5 rounded-full bg-white/[0.04] border border-white/[0.08] p-0.5 overflow-hidden">
-          <div class="h-full rounded-full bg-signal-green transition-all duration-1000" style={`width: ${Math.max(2, finance.percentage)}%;`}></div>
         </div>
       </div>
     </div>
 
     <!-- Breakdown Category Cards -->
     <div class="flex flex-col gap-6">
-      <h2 class="font-display text-2xl sm:text-3xl font-semibold text-text">Budget Allocation Breakdown</h2>
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold text-text">Contributions Breakdown</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {finance.breakdown.map((item) => {
-          const catPercentage = Math.min(100, Math.round((item.paid / Math.max(1, item.target)) * 100));
-          
           return (
             <div class="p-6 rounded-2xl bg-surface border border-white/[0.08] flex flex-col justify-between hover:border-white/[0.15] transition-colors shadow-lg">
               <div>
@@ -72,12 +55,8 @@ const finance = await getFinance();
               </div>
 
               <div class="mt-8 pt-4 border-t border-white/[0.04]">
-                <div class="flex items-center justify-between text-xs font-mono mb-2">
-                  <span class="text-muted">₦{item.paid.toLocaleString()} raised</span>
-                  <span class="text-text font-bold">{catPercentage}%</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-white/[0.04] overflow-hidden">
-                  <div class="h-full rounded-full bg-gold-500 transition-all duration-700" style={`width: ${Math.max(3, catPercentage)}%;`}></div>
+                <div class="flex items-center justify-between text-xs font-mono">
+                  <span class="text-gold-300 font-bold text-lg">₦{item.paid.toLocaleString()} raised</span>
                 </div>
               </div>
             </div>

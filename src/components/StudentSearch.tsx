@@ -40,8 +40,31 @@ export const StudentSearch: React.FC<StudentSearchProps> = ({ initialStudents = 
     });
   }, [initialStudents, searchQuery, activeFilter]);
 
+  // Client-side hydration safeguard
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
+
+  if (!isMounted) {
+    return (
+      <div className="w-full flex flex-col gap-10 opacity-50 animate-pulse">
+        <div className="w-full max-w-3xl mx-auto flex flex-col gap-6">
+          <div className="w-full h-14 bg-surface border border-white/[0.1] rounded-2xl"></div>
+          <div className="flex gap-4">
+            <div className="w-32 h-8 bg-surface rounded-lg"></div>
+            <div className="w-32 h-8 bg-surface rounded-lg"></div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {[...Array(8)].map((_, i) => (
+            <div key={i} className="rounded-2xl bg-surface border border-white/[0.08] h-80"></div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full flex flex-col gap-10">
+    <div className="w-full flex flex-col gap-10" id="student-search">
       {/* Search & Filter Controls Island */}
       <div className="w-full max-w-3xl mx-auto flex flex-col gap-6">
         <div className="relative flex items-center">
