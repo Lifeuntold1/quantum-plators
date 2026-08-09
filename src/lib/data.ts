@@ -91,7 +91,7 @@ export async function getStudents(): Promise<Student[]> {
         const idxRel = getColIdx(['relationship', 'status'], 7);
         const idxParting = getColIdx(['parting', 'words', 'quote'], 8);
         const idxShout = getColIdx(['shout', 'special'], 9);
-        const idxSocial = getColIdx(['social', 'handle', 'instagram', 'twitter', 'x'], 10);
+        const idxSocial = getColIdx(['social', 'handle', 'instagram', 'twitter'], 10);
 
         // Helper to normalize strings for intelligent profile linking
         const normalizeMatric = (m: string) => m.toLowerCase().replace(/[^a-z0-9]/g, '');

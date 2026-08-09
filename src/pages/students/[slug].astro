@@ -71,7 +71,7 @@ const pageDesc = student.partingWords || `Official academic roster profile for $
               </span>
               {student.stateOfOrigin && (
                 <span class="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-muted font-mono text-xs">
-                  📍 {student.stateOfOrigin} State
+                  📍 {student.stateOfOrigin.replace(/\s*[Ss]tate$/i, '')} State
                 </span>
               )}
             </div>
