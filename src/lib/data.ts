@@ -190,98 +190,37 @@ export async function getStudents(): Promise<Student[]> {
 }
 
 export async function getFinance(): Promise<FinanceSummary> {
-  try {
-    const sheetId = configData.sheets.finance;
-    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
-    
-    const response = await fetch(url);
-    const text = await response.text();
-    const match = text.match(/google\.visualization\.Query\.setResponse\((.+)\)/s);
-    if (!match || !match[1]) throw new Error("Invalid finance visualization data");
-    
-    const json = JSON.parse(match[1]);
-    const rows = json.table?.rows || [];
-
-    let studentCount = 0;
-    let totalPaid = 0;
-    let coreLegacyPaid = 0;
-    let dinnerUpgradePaid = 0;
-    let digitalPlatformPaid = 0;
-
-    rows.forEach((r: any) => {
-      const c = r?.c || [];
-      const studentName = c[0]?.v;
-      if (!studentName || String(studentName).trim() === "" || String(studentName) === "Student Name") {
-        return;
+  // Fetching disabled per request. Returning static breakdown categories only.
+  return {
+    totalPaid: 0,
+    totalExpected: 70 * 30000,
+    percentage: 0,
+    studentCount: 70,
+    breakdown: [
+      {
+        category: "Core Legacy & Projects",
+        description: "Custom Sash, Legacy Project, Class Yearbook, Sign-Out Banner, Coordinator Gift",
+        paid: 0,
+        target: 0,
+        cap: 9000,
+      },
+      {
+        category: "Dinner & Awards Experience",
+        description: "Venue, catering, awards ceremony, and entertainment",
+        paid: 0,
+        target: 0,
+        cap: 20000,
+      },
+      {
+        category: "Digital Platform & Hosting",
+        description: "Domain, continuous hosting, and data infrastructure",
+        paid: 0,
+        target: 0,
+        cap: 1000,
       }
-
-      studentCount++;
-      const paid = typeof c[1]?.v === 'number' ? c[1].v : parseFloat(c[1]?.v) || 0;
-      totalPaid += paid;
-
-      const sash = typeof c[4]?.v === 'number' ? c[4].v : parseFloat(c[4]?.v) || 0;
-      const legacy = typeof c[5]?.v === 'number' ? c[5].v : parseFloat(c[5]?.v) || 0;
-      const yearbook = typeof c[6]?.v === 'number' ? c[6].v : parseFloat(c[6]?.v) || 0;
-      const banner = typeof c[7]?.v === 'number' ? c[7].v : parseFloat(c[7]?.v) || 0;
-      const gift = typeof c[8]?.v === 'number' ? c[8].v : parseFloat(c[8]?.v) || 0;
-      
-      coreLegacyPaid += (sash + legacy + yearbook + banner + gift);
-      const dinner = typeof c[9]?.v === 'number' ? c[9].v : parseFloat(c[9]?.v) || 0;
-      dinnerUpgradePaid += dinner;
-
-      const allocated = (sash + legacy + yearbook + banner + gift + dinner);
-      if (paid > allocated) {
-        digitalPlatformPaid += (paid - allocated);
-      }
-    });
-
-    const targetPerStudent = 30000;
-    // Default to at least 70 students from official roster if finance sheet count is lower
-    const baseCount = Math.max(70, studentCount);
-    const totalExpected = baseCount * targetPerStudent;
-    const percentage = Math.min(100, Math.round((totalPaid / totalExpected) * 100));
-
-    return {
-      totalPaid,
-      totalExpected,
-      percentage,
-      studentCount: baseCount,
-      breakdown: [
-        {
-          category: "Core Legacy & Projects",
-          description: "Custom Sash, Legacy Project, Class Yearbook, Sign-Out Banner, Coordinator Gift",
-          paid: coreLegacyPaid,
-          target: baseCount * 9000,
-          cap: 9000,
-        },
-        {
-          category: "Dinner & Awards Experience",
-          description: "Venue, catering, awards ceremony, and entertainment",
-          paid: dinnerUpgradePaid,
-          target: baseCount * 20000,
-          cap: 20000,
-        },
-        {
-          category: "Digital Platform & Hosting",
-          description: "Domain, continuous hosting, and data infrastructure",
-          paid: digitalPlatformPaid,
-          target: baseCount * 1000,
-          cap: 1000,
-        }
-      ],
-      fetchedAt: new Date().toISOString(),
-    };
-  } catch (err) {
-    console.warn("Failed to fetch finance data; defaulting to 70 student treasury baseline.", err);
-    return {
-      totalPaid: 0,
-      totalExpected: 70 * 30000,
-      percentage: 0,
-      studentCount: 70,
-      breakdown: [],
-      fetchedAt: new Date().toISOString(),
-    };
-  }
+    ],
+    fetchedAt: new Date().toISOString(),
+  };
 }
 
 export function getStudentNominations(fullName?: string) {

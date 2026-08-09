@@ -6,68 +6,34 @@ const finance = await getFinance();
 ---
 
 <Layout
-  title="Financial Treasury Dashboard | Quantum Plators Physics '24"
-  description="Transparent real-time financial breakdown, class project contributions, and budget status for the Physics Class of 2024, University of Jos."
+  title="Financial Breakdown | Quantum Plators Physics '24"
+  description="Transparent breakdown of the class project contributions and dinner fee for the Physics Class of 2024, University of Jos."
 >
   <div class="flex flex-col gap-14 max-w-5xl mx-auto">
     
     <!-- Header -->
     <div class="max-w-3xl">
-      <span class="text-xs font-mono uppercase tracking-widest text-signal-green font-medium">Class Financial Status</span>
+      <span class="text-xs font-mono uppercase tracking-widest text-gold-400 font-medium">Class Financial Breakdown</span>
       <h1 class="font-display text-4xl sm:text-6xl font-bold text-text mt-2 tracking-tight">
-        Financial Dashboard
+        Financial Breakdown
       </h1>
       <p class="mt-4 text-base sm:text-lg font-body text-muted leading-relaxed">
-        Clear breakdown and progress tracking of our class contributions toward our ₦30,000 per-student target for class projects and dinner.
+        A clear breakdown of our class contributions toward our ₦30,000 per-student target for class projects, graduation dinner, and legacy activities.
       </p>
-    </div>
-
-    <!-- Master Summary Bar Card -->
-    <div class="rounded-3xl bg-surface border border-white/[0.08] p-8 sm:p-12 relative overflow-hidden shadow-2xl">
-      <div class="absolute -right-20 -top-20 w-80 h-80 bg-radial-gold opacity-20 pointer-events-none"></div>
-
-      <div class="pb-8 border-b border-white/[0.06]">
-        <div>
-          <span class="text-xs font-mono text-muted uppercase tracking-wider block">Total Contributions Paid</span>
-          <span class="font-mono text-4xl sm:text-5xl font-bold text-signal-green mt-2 block tabular-nums">
-            ₦{finance.totalPaid.toLocaleString()}
-          </span>
-        </div>
-      </div>
     </div>
 
     <!-- Breakdown Category Cards -->
     <div class="flex flex-col gap-6">
-      <h2 class="font-display text-2xl sm:text-3xl font-semibold text-text">Contributions Breakdown</h2>
-      
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {finance.breakdown.map((item) => {
           return (
-            <div class="p-6 rounded-2xl bg-surface border border-white/[0.08] flex flex-col justify-between hover:border-white/[0.15] transition-colors shadow-lg">
-              <div>
-                <div class="flex items-center justify-between mb-4">
-                  <span class="font-mono text-[11px] font-bold uppercase tracking-widest text-gold-300 px-2.5 py-1 rounded bg-white/[0.04] border border-white/[0.06]">
-                    Fee: ₦{item.cap.toLocaleString()} / student
-                  </span>
-                </div>
-                <h3 class="font-display text-xl font-semibold text-text">{item.category}</h3>
-                <p class="text-xs font-body text-muted mt-2 leading-relaxed h-12">{item.description}</p>
-              </div>
-
-              <div class="mt-8 pt-4 border-t border-white/[0.04]">
-                <div class="flex items-center justify-between text-xs font-mono">
-                  <span class="text-gold-300 font-bold text-lg">₦{item.paid.toLocaleString()} raised</span>
-                </div>
-              </div>
+            <div class="p-6 rounded-2xl bg-surface border border-white/[0.08] flex flex-col justify-start hover:border-gold-500/30 transition-colors shadow-lg group">
+              <h3 class="font-display text-xl font-semibold text-text group-hover:text-gold-300 transition-colors">{item.category}</h3>
+              <p class="text-sm font-body text-muted mt-3 leading-relaxed">{item.description}</p>
             </div>
           );
         })}
       </div>
-    </div>
-
-    <!-- Treasury Note -->
-    <div class="p-6 rounded-2xl bg-ink-950 border border-white/[0.04] text-center text-xs font-mono text-muted">
-      <p>Last updated: {new Date(finance.fetchedAt).toLocaleString('en-NG')} • Official Class Financial Records</p>
     </div>
 
   </div>

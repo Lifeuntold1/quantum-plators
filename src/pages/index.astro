@@ -1,11 +1,10 @@
 ---
 import Layout from '../components/Layout.astro';
 import HeroSlideshow from '../components/HeroSlideshow.tsx';
-import { getConfig, getFinance, getAwards, getStudents, getFybWeek, getOpportunities } from '../lib/data';
+import { getConfig, getAwards, getStudents, getFybWeek, getOpportunities } from '../lib/data';
 import { getSlideshowImages, getProfImages } from '../lib/media';
 
 const config = getConfig();
-const finance = await getFinance();
 const awards = getAwards();
 const students = await getStudents();
 const fybWeek = getFybWeek();
