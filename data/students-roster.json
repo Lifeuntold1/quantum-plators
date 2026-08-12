@@ -172,7 +172,10 @@
   {
     "slug": "irabor-fortune",
     "matricNumber": "UJ/2020/NS/1068",
-    "fullName": "IRABOR FORTUNE"
+    "fullName": "IRABOR FORTUNE",
+    "photo": {
+      "src": "/images/students/irabor.webp"
+    }
   },
   {
     "slug": "agidi-endurance-ushingil",

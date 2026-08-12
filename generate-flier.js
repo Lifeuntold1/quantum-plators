@@ -5,10 +5,10 @@ const rosterStr = fs.readFileSync('data/students-roster.json', 'utf8');
 const roster = JSON.parse(rosterStr);
 roster.sort((a, b) => a.fullName.localeCompare(b.fullName));
 const students = roster.slice(0, 60);
-const columns = [[], [], [], []];
+const columns = [[], [], []];
 students.forEach((student, index) => {
-    const colIndex = Math.floor(index / 15);
-    if (colIndex < 4) {
+    const colIndex = Math.floor(index / 20);
+    if (colIndex < 3) {
         columns[colIndex].push(student.fullName);
     }
 });
@@ -28,7 +28,7 @@ const html = `<!DOCTYPE html>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            width: 1400px; height: 1600px;
+            width: 1400px; height: 1800px;
             background-color: #050505; color: #ffffff; font-family: 'Outfit', sans-serif;
             position: relative; overflow: hidden; display: flex; flex-direction: column;
         }
@@ -68,7 +68,7 @@ const html = `<!DOCTYPE html>
         .main-title .success { font-size: 84px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 0 40px rgba(212, 175, 55, 0.4); margin-bottom: 12px; text-transform: uppercase; }
         .main-title .exams { font-size: 34px; color: #D4AF37; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: linear-gradient(135deg, #F9D423 0%, #FF4E50 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .students-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; width: 100%;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; width: 100%;
             background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(212, 175, 55, 0.25);
             border-radius: 32px; padding: 45px; backdrop-filter: blur(20px); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
             margin-bottom: 40px; flex-grow: 1;
@@ -121,7 +121,7 @@ const html = `<!DOCTYPE html>
                 <div class="student-col">
                     ${col.map((name, rowIdx) => `
                         <div class="student-item">
-                            <div class="student-number">${(colIdx * 15) + rowIdx + 1}</div>
+                            <div class="student-number">${(colIdx * 20) + rowIdx + 1}</div>
                             <div class="student-name">${name}</div>
                         </div>
                     `).join('')}
@@ -144,7 +144,7 @@ fs.writeFileSync('flier.html', html);
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--hide-scrollbars']
     });
     const page = await browser.newPage();
-    await page.setViewport({ width: 1400, height: 1600, deviceScaleFactor: 2 });
+    await page.setViewport({ width: 1400, height: 1800, deviceScaleFactor: 2 });
     await page.setContent(html, { waitUntil: 'load' });
     
     console.log('Taking screenshot...');
