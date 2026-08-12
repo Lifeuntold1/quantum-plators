@@ -78,10 +78,10 @@ const html = `<!DOCTYPE html>
             border-radius: 32px; padding: 45px; backdrop-filter: blur(20px); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
             margin-bottom: 40px; flex-grow: 1;
         }
-        .student-col { display: flex; flex-direction: column; justify-content: space-between; }
-        .student-item { display: flex; align-items: center; gap: 14px; }
+        .student-col { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+        .student-item { display: flex; align-items: center; gap: 14px; min-width: 0; }
         .student-number { width: 34px; height: 34px; background: #D4AF37; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; flex-shrink: 0; box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
-        .student-name { font-size: 20px; font-weight: 600; color: rgba(255, 255, 255, 0.95); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-transform: uppercase; letter-spacing: 0.03em; }
+        .student-name { font-size: 17.5px; font-weight: 600; color: rgba(255, 255, 255, 0.95); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-transform: uppercase; letter-spacing: 0.03em; min-width: 0; flex: 1; }
         .footer { text-align: center; margin-top: auto; }
         .footer p { font-size: 26px; color: rgba(255, 255, 255, 0.75); font-style: italic; letter-spacing: 0.02em; }
         .footer .strong { color: #D4AF37; font-weight: 700; font-style: normal; }
