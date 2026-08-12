@@ -39,5 +39,20 @@ const initialStudents = students.map((s) => ({
 
     <!-- Client Interactive Search Island -->
     <StudentSearch client:load initialStudents={initialStudents} />
+
+    <!-- Final Exams Flier -->
+    <div class="mt-8 pt-12 border-t border-gold-500/10 w-full max-w-4xl mx-auto flex flex-col items-center">
+      <div class="text-center mb-8">
+        <span class="text-xs font-mono uppercase tracking-widest text-gold-400">Class of 2024</span>
+        <h2 class="font-display text-3xl font-bold text-text mt-2">Final Exams Wishes</h2>
+      </div>
+      <img src="/fliers/exam-success.webp" alt="Class of 2024 Final Exams Wishes" class="w-full rounded-2xl shadow-2xl border border-gold-500/20" loading="lazy" />
+      <a href="/fliers/exam-success.webp" download="Quantum-Plators-Final-Exams-Wishes.webp" class="mt-8 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold-500/10 text-gold-400 hover:bg-gold-500 hover:text-black transition-all font-semibold border border-gold-500/30 hover:border-gold-500 hover:scale-105 active:scale-95">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+        Download Flier
+      </a>
+    </div>
   </div>
 </Layout>
