@@ -60,9 +60,10 @@ const html = `<!DOCTYPE html>
             width: 110px; height: 110px; object-fit: contain; filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));
         }
         .header-text { text-align: center; display: flex; flex-direction: column; gap: 6px; }
-        .header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600; color: #D4AF37; letter-spacing: 0.15em; text-transform: uppercase; }
         .header-text h1 { font-size: 40px; font-weight: 800; color: #ffffff; letter-spacing: 0.05em; text-transform: uppercase; }
         .header-text h2 { font-size: 30px; font-weight: 500; color: rgba(255, 255, 255, 0.8); letter-spacing: 0.02em; text-transform: uppercase; }
+        .header-text .qp-name { font-size: 38px; font-weight: 800; color: #D4AF37; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 12px; }
+        .header-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600; color: #D4AF37; letter-spacing: 0.15em; text-transform: uppercase; }
         .main-title { text-align: center; margin-bottom: 50px; }
         .main-title .wishing { font-size: 28px; color: #D4AF37; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
         .main-title .success { font-size: 84px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 0 40px rgba(212, 175, 55, 0.4); margin-bottom: 12px; text-transform: uppercase; }
@@ -104,9 +105,10 @@ const html = `<!DOCTYPE html>
             <div class="header-center">
                 <img src="data:image/svg+xml;base64,${qpLogoB64}" class="qp-logo" />
                 <div class="header-text">
-                    <h3>Class of 2024</h3>
                     <h1>Department of Physics</h1>
                     <h2>University of Jos</h2>
+                    <h1 class="qp-name">Quantum Plators</h1>
+                    <h3>Class of 2024</h3>
                 </div>
             </div>
             <img src="data:image/png;base64,${napsLogo}" class="logo" />
