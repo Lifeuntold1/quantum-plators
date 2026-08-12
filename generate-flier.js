@@ -36,6 +36,10 @@ const html = `<!DOCTYPE html>
             position: absolute; inset: 0;
             background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, transparent 80%); z-index: 1;
         }
+        .bg-logo {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 1000px; height: 1000px; opacity: 0.08; z-index: 2;
+        }
         .physics-symbols {
             position: absolute; inset: 0; pointer-events: none; z-index: 5;
         }
@@ -85,6 +89,7 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
     <div class="bg-pattern"></div>
+    <img src="data:image/svg+xml;base64,${qpLogoB64}" class="bg-logo" />
     <div class="physics-symbols">
         <span style="top: 10%; left: 4%; transform: rotate(-15deg); font-size: 55px;">E = mc²</span>
         <span style="top: 18%; right: 4%; transform: rotate(10deg); font-size: 65px;">iℏ∂Ψ/∂t = ĤΨ</span>
